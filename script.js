@@ -1,3 +1,25 @@
+// Discord-style timestamps - realistic based on current time
+(function() {
+	const now = new Date();
+	const h = now.getHours();
+	const stamps = document.querySelectorAll('.ts');
+	stamps.forEach((el, i) => {
+		// Generate a plausible time in the past
+		// If it's early morning (0-9), show "Včera v HH:MM"
+		// Otherwise show just "HH:MM" (today format on Discord)
+		const offset = (stamps.length - i) * 2 + Math.floor(Math.random() * 3);
+		const msgTime = new Date(now.getTime() - offset * 60000);
+		const msgH = msgTime.getHours();
+		const msgM = String(msgTime.getMinutes()).padStart(2, '0');
+		const isYesterday = msgTime.getDate() !== now.getDate();
+		if (isYesterday) {
+			el.textContent = 'Včera v ' + msgH + ':' + msgM;
+		} else {
+			el.textContent = msgH + ':' + msgM;
+		}
+	});
+})();
+
 // Swap interaction - hover to reveal mnemonic
 document.querySelectorAll('.sw').forEach(el => {
 	const original = el.innerHTML;

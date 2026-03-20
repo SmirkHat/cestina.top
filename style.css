@@ -156,6 +156,8 @@ article hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; 
 .msg .who:hover { text-decoration: underline; }
 .msg .ts {
 	font-size: 11px; color: #949ba4; font-weight: 400;
+	font-family: 'gg sans', 'gg sans Normal', 'Noto Sans', Helvetica, Arial, sans-serif;
+	letter-spacing: 0.01em;
 }
 .msg .txt { color: #dbdee1; }
 .msg .txt .no {
