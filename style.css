@@ -219,7 +219,8 @@ article.has-aside > .content { order: 1; }
 	article.has-aside {
 		grid-template-columns: 1fr; gap: 20px;
 	}
-	article.has-aside > .aside { order: -1; }
+	article.has-aside > .content { order: 1; }
+	article.has-aside > .aside { order: 2; }
 }
 
 /* ─── SHARE BTN ─── */
