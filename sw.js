@@ -1,9 +1,11 @@
-const CACHE = 'cestina-v1';
+const CACHE = 'cestina-v2';
 const ASSETS = [
 	'/',
 	'/style.css',
 	'/script.js',
 	'/favicon.ico',
+	'/elliot.jpg',
+	'/darlene.jpg',
 	'/mneMe.png',
 	'/jiJi.png',
 	'/tip.png',
