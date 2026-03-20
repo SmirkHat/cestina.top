@@ -78,7 +78,8 @@
 
 		body {
 			font-family: 'Geist', system-ui, sans-serif;
-			background: var(--bg); color: var(--fg);
+			background: linear-gradient(180deg, var(--bg) 0%, var(--muted) 100%);
+			color: var(--fg);
 			line-height: 1.65; font-size: 16px;
 			-webkit-font-smoothing: antialiased;
 		}
@@ -115,11 +116,6 @@
 			border-color: var(--primary); color: var(--primary);
 			background: color-mix(in srgb, var(--primary) 8%, transparent);
 			transform: translateY(-1px);
-		}
-		.tags a.hot {
-			background: color-mix(in srgb, var(--primary) 12%, transparent);
-			border-color: color-mix(in srgb, var(--primary) 40%, transparent);
-			color: var(--primary);
 		}
 
 		/* ─── SECTIONS ─── */
@@ -280,17 +276,17 @@
 			<h1><span class="gr">Čeština</span> - nauč se to jednou provždy!</h1>
 			<p>Vyber si, co tě trápí</p>
 			<div class="tags">
-				<a href="#mneme" class="hot">mně/mě</a>
+				<a href="#mneme">mně/mě</a>
 				<a href="#jiji">jí/ji</a>
 				<a href="#mneuvnitr">mě/mně ve slovech</a>
 				<a href="#typ">tip/typ</a>
-				<a href="#zhlednout" class="hot">shlédnout/zhlédnout</a>
+				<a href="#zhlednout">shlédnout/zhlédnout</a>
 				<a href="#vyjimka">výjimka</a>
 				<a href="#hold">holt/hold</a>
 				<a href="#jsi">jsi/si</a>
-				<a href="#sebou" class="hot">s sebou/sebou</a>
+				<a href="#sebou">s sebou/sebou</a>
 				<a href="#sz">s/z předložky</a>
-				<a href="#carky" class="hot">čárky</a>
+				<a href="#carky">čárky</a>
 				<a href="#byt">sloveso být</a>
 			</div>
 		</div>
