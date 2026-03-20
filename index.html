@@ -294,6 +294,16 @@
 		}
 		.related ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 20px; }
 
+		/* ── YouTube Shorts embed ── */
+		.shorts-embed {
+			margin: 20px 0; border-radius: var(--radius); overflow: hidden;
+			border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+			width: 325px; max-width: 100%;
+		}
+		.shorts-embed iframe {
+			display: block; width: 100%; height: 578px; border: none;
+		}
+
 		/* ── Interactive swap (hover to reveal) ── */
 		.swap {
 			cursor: pointer; font-weight: 600; color: var(--accent-foreground);
@@ -402,6 +412,10 @@
 			</div>
 
 			<img class="screenshot" src="screenshot.jpg" alt="Doporučení od Hogůšíků — 10/10 Hogůšíků doporučuje">
+
+			<div class="shorts-embed">
+				<iframe src="https://www.youtube.com/embed/MJm8kX81wYM" title="Mně nebo mě? — YouTube Short" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+			</div>
 		</section>
 
 		<hr>
@@ -538,6 +552,10 @@
 			</div>
 
 			<img class="screenshot" src="screenshot2.jpg" alt="GeekBoy screenshot">
+
+			<div class="shorts-embed">
+				<iframe src="https://www.youtube.com/embed/-dkXEUGJvZ8" title="Jsi nebo si? — YouTube Short" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+			</div>
 		</section>
 
 		<hr>
