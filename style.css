@@ -1,4 +1,6 @@
 /* ─── FONTS ─── */
+@import url('https://fonts.cdnfonts.com/css/gg-sans-2');
+
 @font-face { font-family: 'Geist'; src: url('https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/Geist-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Geist'; src: url('https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/Geist-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Geist'; src: url('https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/Geist-SemiBold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
@@ -127,16 +129,41 @@ article hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; 
 	font-size: 15px; font-weight: 500; color: var(--accent-fg);
 }
 
-/* ─── CHAT ─── */
-.chat { display: flex; flex-direction: column; gap: 4px; margin: 16px 0; }
-.msg {
-	background: var(--muted); border-radius: var(--r);
-	padding: 10px 14px; display: flex; gap: 8px; align-items: baseline;
-	font-size: 15px;
+/* ─── DISCORD CHAT ─── */
+.chat {
+	margin: 16px 0; border-radius: var(--r); overflow: hidden;
+	background: #313338; color: #dbdee1;
+	font-family: 'gg sans', 'gg sans Normal', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 15px; line-height: 1.375;
 }
+.msg {
+	display: flex; gap: 16px; padding: 4px 16px;
+	align-items: flex-start;
+}
+.msg.first { padding-top: 12px; margin-top: 0; }
+.msg:last-child { padding-bottom: 12px; }
+.msg .avatar {
+	width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+	margin-top: 2px;
+}
+.msg .avatar.hidden { visibility: hidden; width: 40px; }
+.msg .body { min-width: 0; }
+.msg .meta { display: flex; align-items: baseline; gap: 8px; }
 .msg .who {
-	font-family: 'Geist Mono', monospace; font-size: 12px;
-	font-weight: 500; color: var(--primary); white-space: nowrap;
+	font-size: 15px; font-weight: 600; cursor: pointer;
+	white-space: nowrap;
+}
+.msg .who:hover { text-decoration: underline; }
+.msg .ts {
+	font-size: 11px; color: #949ba4; font-weight: 400;
+}
+.msg .txt { color: #dbdee1; }
+.msg .txt .no {
+	color: #f23f43; font-weight: 400;
+	text-decoration: line-through; text-decoration-thickness: 2px;
+}
+.msg .txt .ok {
+	color: #23a55a; font-weight: 600;
 }
 .no { color: var(--err); font-weight: 600; text-decoration: line-through; text-decoration-thickness: 2px; }
 .ok { color: var(--ok); font-weight: 600; }
