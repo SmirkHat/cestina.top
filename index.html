@@ -74,7 +74,7 @@
 			}
 		}
 
-		html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+		html { scroll-behavior: smooth; scroll-padding-top: 24px; }
 
 		body {
 			font-family: 'Geist', system-ui, sans-serif;
@@ -84,51 +84,12 @@
 		}
 
 		/* ─── NAV ─── */
-		header {
-			position: sticky; top: 0; z-index: 100;
-			border-bottom: 1px solid var(--border);
-			backdrop-filter: blur(16px) saturate(180%);
-			-webkit-backdrop-filter: blur(16px) saturate(180%);
-			background: color-mix(in srgb, var(--bg) 80%, transparent);
-		}
-		.hdr-bar {
-			max-width: 960px; margin: 0 auto; padding: 0 24px;
-			display: flex; align-items: center; justify-content: center;
-			height: 48px; position: relative;
-		}
-		.brand { font-weight: 700; font-size: 15px; color: var(--fg); text-decoration: none; }
-		.brand:hover { text-decoration: none; color: var(--primary); }
-		.menu-btn {
-			background: none; border: none; color: var(--fg);
-			cursor: pointer; padding: 6px; border-radius: 8px;
-			position: absolute; right: 24px;
-		}
-		.menu-btn:hover { background: var(--muted); }
-		.menu-btn svg { display: block; }
-		.nav-drop {
-			display: none; max-width: 960px; margin: 0 auto;
-			padding: 8px 24px 16px;
-		}
-		.nav-drop.open { display: block; }
-		.nav-grid {
-			display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-			gap: 4px;
-		}
-		.nav-grid a {
-			color: var(--muted-fg); text-decoration: none; font-size: 14px;
-			font-weight: 500; padding: 10px 14px; border-radius: var(--r);
-			transition: all 0.15s; text-align: center;
-		}
-		.nav-grid a:hover {
-			color: var(--primary);
-			background: color-mix(in srgb, var(--primary) 10%, transparent);
-		}
 
 		/* ─── LAYOUT ─── */
 		main { max-width: 960px; margin: 0 auto; padding: 0 24px 96px; }
 
 		/* ─── HERO ─── */
-		.hero { text-align: center; padding: 64px 0 0; }
+		.hero { text-align: center; padding: 64px 0 16px; }
 		.hero h1 {
 			font-size: clamp(2rem, 6vw, 3rem); font-weight: 700;
 			line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 12px;
@@ -138,7 +99,28 @@
 			-webkit-background-clip: text; -webkit-text-fill-color: transparent;
 			background-clip: text;
 		}
-		.hero p { color: var(--muted-fg); font-size: 1.1rem; }
+		.hero p { color: var(--muted-fg); font-size: 1.1rem; margin-bottom: 28px; }
+		.tags {
+			display: flex; flex-wrap: wrap; justify-content: center;
+			gap: 10px; max-width: 600px; margin: 0 auto;
+		}
+		.tags a {
+			display: inline-block; padding: 8px 18px;
+			background: var(--card); border: 1px solid var(--border);
+			border-radius: 999px; color: var(--fg); font-size: 14px;
+			font-weight: 500; text-decoration: none; transition: all 0.15s;
+			white-space: nowrap;
+		}
+		.tags a:hover {
+			border-color: var(--primary); color: var(--primary);
+			background: color-mix(in srgb, var(--primary) 8%, transparent);
+			transform: translateY(-1px);
+		}
+		.tags a.hot {
+			background: color-mix(in srgb, var(--primary) 12%, transparent);
+			border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+			color: var(--primary);
+		}
 
 		/* ─── SECTIONS ─── */
 		article {
@@ -293,35 +275,24 @@
 </head>
 
 <body>
-	<header>
-		<div class="hdr-bar">
-			<a href="#" class="brand">cestina.top</a>
-			<button class="menu-btn" id="menuBtn" aria-label="Témata" aria-expanded="false">
-				<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5h14M3 10h14M3 15h14"/></svg>
-			</button>
-		</div>
-		<nav class="nav-drop" id="navDrop" role="navigation" aria-label="Témata">
-			<div class="nav-grid">
-				<a href="#mneme">mně/mě</a>
-				<a href="#jiji">jí/ji</a>
-				<a href="#mneuvnitr">mě/mně ve slovech</a>
-				<a href="#typ">tip/typ</a>
-				<a href="#zhlednout">shlédnout/zhlédnout</a>
-				<a href="#vyjimka">výjimka</a>
-				<a href="#hold">holt/hold</a>
-				<a href="#jsi">jsi/si</a>
-				<a href="#sebou">s sebou/sebou</a>
-				<a href="#sz">s/z předložky</a>
-				<a href="#carky">čárky</a>
-				<a href="#byt">sloveso být</a>
-			</div>
-		</nav>
-	</header>
-
 	<main>
 		<div class="hero">
 			<h1><span class="gr">Čeština</span> - nauč se to jednou provždy!</h1>
-			<p>Přehledný průvodce nejčastějšími chybami v češtině</p>
+			<p>Vyber si, co tě trápí</p>
+			<div class="tags">
+				<a href="#mneme" class="hot">mně/mě</a>
+				<a href="#jiji">jí/ji</a>
+				<a href="#mneuvnitr">mě/mně ve slovech</a>
+				<a href="#typ">tip/typ</a>
+				<a href="#zhlednout" class="hot">shlédnout/zhlédnout</a>
+				<a href="#vyjimka">výjimka</a>
+				<a href="#hold">holt/hold</a>
+				<a href="#jsi">jsi/si</a>
+				<a href="#sebou" class="hot">s sebou/sebou</a>
+				<a href="#sz">s/z předložky</a>
+				<a href="#carky" class="hot">čárky</a>
+				<a href="#byt">sloveso být</a>
+			</div>
 		</div>
 
 		<!-- mně / mě -->
@@ -621,20 +592,6 @@
 			const alt = el.getAttribute('data-alt');
 			el.addEventListener('mouseenter', () => { el.textContent = alt; });
 			el.addEventListener('mouseleave', () => { el.innerHTML = original; });
-		});
-
-		// Menu toggle
-		const btn = document.getElementById('menuBtn');
-		const drop = document.getElementById('navDrop');
-		btn.addEventListener('click', () => {
-			const open = drop.classList.toggle('open');
-			btn.setAttribute('aria-expanded', open);
-		});
-		drop.querySelectorAll('a').forEach(a => {
-			a.addEventListener('click', () => {
-				drop.classList.remove('open');
-				btn.setAttribute('aria-expanded', 'false');
-			});
 		});
 
 		// Share buttons
