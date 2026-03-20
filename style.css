@@ -92,8 +92,8 @@ main { max-width: 960px; margin: 0 auto; padding: 0 24px 96px; }
 	transform: translateY(-1px); text-decoration: none;
 }
 @media (max-width: 480px) {
-	.tags { gap: 8px; }
-	.tags a { padding: 7px 14px; font-size: 13px; flex: 1 1 auto; text-align: center; min-width: 0; }
+	.tags { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+	.tags a { padding: 7px 14px; font-size: 13px; text-align: center; }
 }
 
 /* ─── SECTIONS ─── */
