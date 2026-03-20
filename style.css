@@ -135,18 +135,20 @@ article hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; 
 	background: #313338; color: #dbdee1;
 	font-family: 'gg sans', 'gg sans Normal', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	font-size: 15px; line-height: 1.375;
+	max-width: 520px; padding: 2px 0;
 }
 .msg {
-	display: flex; gap: 16px; padding: 4px 16px;
+	display: flex; gap: 16px; padding: 2px 16px;
 	align-items: flex-start;
 }
-.msg.first { padding-top: 12px; margin-top: 0; }
-.msg:last-child { padding-bottom: 12px; }
+.msg.first { padding-top: 8px; margin-top: 2px; }
+.msg:last-child { padding-bottom: 8px; }
 .msg .avatar {
 	width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
-	margin-top: 2px;
+	margin-top: 2px; display: flex; align-items: center; justify-content: center;
+	font-weight: 600; font-size: 18px; color: #fff;
 }
-.msg .avatar.hidden { visibility: hidden; width: 40px; }
+.msg .avatar.hidden { visibility: hidden; width: 40px; height: 0; }
 .msg .body { min-width: 0; }
 .msg .meta { display: flex; align-items: baseline; gap: 8px; }
 .msg .who {
@@ -156,7 +158,6 @@ article hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; 
 .msg .who:hover { text-decoration: underline; }
 .msg .ts {
 	font-size: 11px; color: #949ba4; font-weight: 400;
-	font-family: 'gg sans', 'gg sans Normal', 'Noto Sans', Helvetica, Arial, sans-serif;
 	letter-spacing: 0.01em;
 }
 .msg .txt { color: #dbdee1; }
