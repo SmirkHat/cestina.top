@@ -92,21 +92,23 @@
 			background: color-mix(in srgb, var(--bg) 80%, transparent);
 		}
 		.hdr-top {
-			max-width: 780px; margin: 0 auto; padding: 0 24px;
-			display: flex; align-items: center; justify-content: space-between;
-			height: 48px;
+			max-width: 960px; margin: 0 auto; padding: 0 24px;
+			display: flex; align-items: center; justify-content: center;
+			height: 48px; position: relative;
 		}
 		.brand { font-weight: 700; font-size: 15px; color: var(--fg); text-decoration: none; }
 		.brand:hover { text-decoration: none; color: var(--primary); }
 		.menu-btn {
 			display: none; background: none; border: none; color: var(--fg);
 			cursor: pointer; padding: 6px; border-radius: 8px;
+			position: absolute; right: 24px;
 		}
 		.menu-btn:hover { background: var(--muted); }
 		.menu-btn svg { display: block; }
 		.hdr-links {
-			max-width: 780px; margin: 0 auto; padding: 0 24px 10px;
+			max-width: 960px; margin: 0 auto; padding: 0 24px 10px;
 			display: flex; gap: 2px; flex-wrap: nowrap; overflow-x: auto;
+			justify-content: center;
 			-webkit-overflow-scrolling: touch; scrollbar-width: none;
 		}
 		.hdr-links::-webkit-scrollbar { display: none; }
@@ -121,7 +123,7 @@
 		}
 		.mobile-menu {
 			display: none; flex-direction: column; gap: 2px;
-			padding: 8px 24px 16px; max-width: 780px; margin: 0 auto;
+			padding: 8px 24px 16px; max-width: 960px; margin: 0 auto;
 		}
 		.mobile-menu.open { display: flex; }
 		.mobile-menu a {
@@ -139,7 +141,7 @@
 		}
 
 		/* ─── LAYOUT ─── */
-		main { max-width: 780px; margin: 0 auto; padding: 0 24px 96px; }
+		main { max-width: 960px; margin: 0 auto; padding: 0 24px 96px; }
 
 		/* ─── HERO ─── */
 		.hero { text-align: center; padding: 64px 0 0; }
@@ -224,10 +226,16 @@
 		.tbl tr:last-child td { border-bottom: none; }
 		.tbl td:first-child { font-weight: 500; color: var(--muted-fg); }
 
-		/* ─── SIDEBAR MEDIA (wiki-style float) ─── */
+		/* ─── TWO-COLUMN LAYOUT ─── */
+		article.has-aside {
+			display: grid; grid-template-columns: 1fr 280px; gap: 32px;
+			align-items: start;
+		}
+		article.has-aside > .aside { order: 2; }
+		article.has-aside > .content { order: 1; }
 		.aside {
-			float: right; margin: 0 0 16px 24px; max-width: 220px; width: 100%;
 			display: flex; flex-direction: column; gap: 12px;
+			position: sticky; top: 120px;
 		}
 		.aside img {
 			border-radius: var(--r); border: 1px solid var(--border);
@@ -237,13 +245,12 @@
 			border-radius: var(--r); overflow: hidden;
 			border: 1px solid var(--border); width: 100%;
 		}
-		.aside .shorts iframe { display: block; width: 100%; height: 391px; border: none; }
-		article::after { content: ""; display: table; clear: both; }
-		@media (max-width: 560px) {
-			.aside {
-				float: none; max-width: 100%; margin: 16px 0;
+		.aside .shorts iframe { display: block; width: 100%; height: 498px; border: none; }
+		@media (max-width: 700px) {
+			article.has-aside {
+				grid-template-columns: 1fr; gap: 20px;
 			}
-			.aside .shorts iframe { height: 498px; }
+			article.has-aside > .aside { order: -1; }
 		}
 
 		/* ─── SWAP ─── */
@@ -255,7 +262,7 @@
 
 		/* ─── FOOTER ─── */
 		footer {
-			max-width: 780px; margin: 0 auto;
+			max-width: 960px; margin: 0 auto;
 			text-align: center; padding: 32px 24px;
 			color: var(--muted-fg); font-size: 13px;
 			border-top: 1px solid var(--border); line-height: 1.8;
@@ -319,7 +326,33 @@
 		</div>
 
 		<!-- mně / mě -->
-		<article id="mneme">
+		<article id="mneme" class="has-aside">
+			<div class="content">
+				<h2>Mně nebo mě?</h2>
+				<p>Zájmena „mně" a „mě" si lidé často pletou. Jak si to zapamatovat?</p>
+
+				<div class="chat">
+					<div class="msg"><span class="who">Rohlík:</span> Za <span class="no">mně</span> fajn.</div>
+					<div class="msg"><span class="who">pepa_z_depa:</span> <span class="no">Mě</span> žral Chrome hrozně moc RAMky</div>
+				</div>
+				<div class="chat">
+					<div class="msg"><span class="who">Rohlík:</span> Za <span class="ok">mě</span> fajn.</div>
+					<div class="msg"><span class="who">pepa_z_depa:</span> <span class="ok">Mně</span> žral Chrome hrozně moc RAMky</div>
+				</div>
+
+				<div class="tip">💡 Tobě → <strong>mně</strong> &nbsp;|&nbsp; Tebe → <strong>mě</strong></div>
+
+				<div class="exs">
+					<div class="ex">Dáš to m__? <span class="arr">→</span> <span class="sw" data-alt="Tobě">Pep<strong>ovi</strong></span> <span class="arr">→</span> <span class="ok">mně</span></div>
+					<div class="ex">Podle m__ <span class="arr">→</span> <span class="sw" data-alt="Tebe">Pep<strong>y</strong></span> <span class="arr">→</span> <span class="ok">mě</span></div>
+					<div class="ex">Za m__ fajn. <span class="arr">→</span> <span class="sw" data-alt="Tebe">Pep<strong>u</strong></span> <span class="arr">→</span> <span class="ok">mě</span></div>
+					<div class="ex">M__ se to líbilo. <span class="arr">→</span> <span class="sw" data-alt="Tobě">Pep<strong>ovi</strong></span> <span class="arr">→</span> <span class="ok">mně</span></div>
+				</div>
+
+				<div class="rule">
+					<p>💡 Pokud ti trik s tebe/tobě nejde do hlavy, nahraď si zájmeno jménem - třeba Pepou. Koncovka má 1 písmeno → <strong>mě</strong>. Má 3 písmena → <strong>mně</strong>.</p>
+				</div>
+			</div>
 			<div class="aside">
 				<img src="mneMe.png" alt="Meme: mně vs mě">
 				<img src="screenshot.jpg" alt="Doporučení od Hogůšíků">
@@ -327,71 +360,51 @@
 					<iframe src="https://www.youtube.com/embed/MJm8kX81wYM" title="Mně nebo mě? - YouTube Short" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 				</div>
 			</div>
-			<h2>Mně nebo mě?</h2>
-			<p>Zájmena „mně" a „mě" si lidé často pletou. Jak si to zapamatovat?</p>
-
-			<div class="chat">
-				<div class="msg"><span class="who">Rohlík:</span> Za <span class="no">mně</span> fajn.</div>
-				<div class="msg"><span class="who">pepa_z_depa:</span> <span class="no">Mě</span> žral Chrome hrozně moc RAMky</div>
-			</div>
-			<div class="chat">
-				<div class="msg"><span class="who">Rohlík:</span> Za <span class="ok">mě</span> fajn.</div>
-				<div class="msg"><span class="who">pepa_z_depa:</span> <span class="ok">Mně</span> žral Chrome hrozně moc RAMky</div>
-			</div>
-
-			<div class="tip">💡 Tobě → <strong>mně</strong> &nbsp;|&nbsp; Tebe → <strong>mě</strong></div>
-
-			<div class="exs">
-				<div class="ex">Dáš to m__? <span class="arr">→</span> <span class="sw" data-alt="Tobě">Pep<strong>ovi</strong></span> <span class="arr">→</span> <span class="ok">mně</span></div>
-				<div class="ex">Podle m__ <span class="arr">→</span> <span class="sw" data-alt="Tebe">Pep<strong>y</strong></span> <span class="arr">→</span> <span class="ok">mě</span></div>
-				<div class="ex">Za m__ fajn. <span class="arr">→</span> <span class="sw" data-alt="Tebe">Pep<strong>u</strong></span> <span class="arr">→</span> <span class="ok">mě</span></div>
-				<div class="ex">M__ se to líbilo. <span class="arr">→</span> <span class="sw" data-alt="Tobě">Pep<strong>ovi</strong></span> <span class="arr">→</span> <span class="ok">mně</span></div>
-			</div>
-
-			<div class="rule">
-				<p>💡 Pokud ti trik s tebe/tobě nejde do hlavy, nahraď si zájmeno jménem - třeba Pepou. Koncovka má 1 písmeno → <strong>mě</strong>. Má 3 písmena → <strong>mně</strong>.</p>
-			</div>
 		</article>
 
 		<!-- jí / ji -->
-		<article id="jiji">
+		<article id="jiji" class="has-aside">
+			<div class="content">
+				<h2>Jí nebo ji?</h2>
+				<p>Další zapeklitá zájmena - ale během minuty ti to začne dávat smysl.</p>
+
+				<div class="rule">
+					<p><strong>Ji</strong> - pouze ve 4. pádě (koho, co). Nahradíme zájmenem <strong>tu</strong>.</p>
+					<p><strong>Jí</strong> - ve všech ostatních pádech. Nahradíme zájmenem <strong>té</strong>.</p>
+				</div>
+
+				<div class="tip">💡 Krátké „ji" = krátké „tu" &nbsp;|&nbsp; Dlouhé „jí" = dlouhé „té"</div>
+
+				<div class="rule">
+					<p>Snažil se <span class="sw" data-alt="té">jí</span> říct, že <span class="sw" data-alt="té">jí</span> spadla peněženka.</p>
+					<p>Nakonec si <span class="sw" data-alt="tu">ji</span> nechal. Půjde <span class="sw" data-alt="tu">ji</span> zužitkovat v kasínu.</p>
+					<p>Uslyšel <span class="sw" data-alt="tu">ji</span> brečet a vrátil <span class="sw" data-alt="té">jí</span> peněženku.</p>
+				</div>
+			</div>
 			<div class="aside">
 				<img src="jiJi.png" alt="Meme: jí vs ji">
-			</div>
-			<h2>Jí nebo ji?</h2>
-			<p>Další zapeklitá zájmena - ale během minuty ti to začne dávat smysl.</p>
-
-			<div class="rule">
-				<p><strong>Ji</strong> - pouze ve 4. pádě (koho, co). Nahradíme zájmenem <strong>tu</strong>.</p>
-				<p><strong>Jí</strong> - ve všech ostatních pádech. Nahradíme zájmenem <strong>té</strong>.</p>
-			</div>
-
-			<div class="tip">💡 Krátké „ji" = krátké „tu" &nbsp;|&nbsp; Dlouhé „jí" = dlouhé „té"</div>
-
-			<div class="rule">
-				<p>Snažil se <span class="sw" data-alt="té">jí</span> říct, že <span class="sw" data-alt="té">jí</span> spadla peněženka.</p>
-				<p>Nakonec si <span class="sw" data-alt="tu">ji</span> nechal. Půjde <span class="sw" data-alt="tu">ji</span> zužitkovat v kasínu.</p>
-				<p>Uslyšel <span class="sw" data-alt="tu">ji</span> brečet a vrátil <span class="sw" data-alt="té">jí</span> peněženku.</p>
 			</div>
 		</article>
 
 		<!-- tip / typ -->
-		<article id="typ">
+		<article id="typ" class="has-aside">
+			<div class="content">
+				<h2>Tip nebo typ?</h2>
+				<p>Na první pohled totožná slova, ale „íčko" kompletně mění význam.</p>
+
+				<div class="rule">
+					<p><strong>TIP</strong> - rada, doporučení, odhad (sázek)</p>
+					<p><strong>TYP</strong> - druh, kategorie (typ člověka, typ výrobku)</p>
+				</div>
+
+				<div class="rule">
+					<p>Jarda si <span class="sw" data-alt="odhadl">tipnul</span>, že mu padnou tři sedmičky. Nevyšlo.</p>
+					<p>U Bohouše je mi dobře. Je to příjemný <strong>typ</strong> člověka.</p>
+					<p>Chceš se dobře najíst? M<span class="sw" data-alt="á rada">ůj tip</span> je jídelna Štefánikova!</p>
+				</div>
+			</div>
 			<div class="aside">
 				<img src="tip.png" alt="Meme: tip vs typ">
-			</div>
-			<h2>Tip nebo typ?</h2>
-			<p>Na první pohled totožná slova, ale „íčko" kompletně mění význam.</p>
-
-			<div class="rule">
-				<p><strong>TIP</strong> - rada, doporučení, odhad (sázek)</p>
-				<p><strong>TYP</strong> - druh, kategorie (typ člověka, typ výrobku)</p>
-			</div>
-
-			<div class="rule">
-				<p>Jarda si <span class="sw" data-alt="odhadl">tipnul</span>, že mu padnou tři sedmičky. Nevyšlo.</p>
-				<p>U Bohouše je mi dobře. Je to příjemný <strong>typ</strong> člověka.</p>
-				<p>Chceš se dobře najíst? M<span class="sw" data-alt="á rada">ůj tip</span> je jídelna Štefánikova!</p>
 			</div>
 		</article>
 
@@ -419,27 +432,45 @@
 		</article>
 
 		<!-- holt / hold -->
-		<article id="hold">
+		<article id="hold" class="has-aside">
+			<div class="content">
+				<h2>Holt, či hold?</h2>
+				<p>Vypadají podobně, ale význam je úplně jiný.</p>
+
+				<div class="rule">
+					<p><strong>HOLD</strong> - pocta (vzdávat hold)</p>
+					<p><strong>HOLT</strong> - zkrátka, prostě</p>
+				</div>
+
+				<div class="rule">
+					<p>Franta mi dal samolepku z Kostíků. Vzdávám mu <span class="sw" data-alt="poctu">hold</span>.</p>
+					<p><span class="sw" data-alt="Prostě">Holt</span> jsem tomu pacholkovi musel napráskat.</p>
+					<p>Vzdávám <span class="sw" data-alt="poctu">hold</span> novému papežovi. <span class="sw" data-alt="Zkrátka">Holt</span> s Františkem už tolik zábavy nebude.</p>
+				</div>
+			</div>
 			<div class="aside">
 				<img src="holdHolt.png" alt="Meme: hold vs holt">
-			</div>
-			<h2>Holt, či hold?</h2>
-			<p>Vypadají podobně, ale význam je úplně jiný.</p>
-
-			<div class="rule">
-				<p><strong>HOLD</strong> - pocta (vzdávat hold)</p>
-				<p><strong>HOLT</strong> - zkrátka, prostě</p>
-			</div>
-
-			<div class="rule">
-				<p>Franta mi dal samolepku z Kostíků. Vzdávám mu <span class="sw" data-alt="poctu">hold</span>.</p>
-				<p><span class="sw" data-alt="Prostě">Holt</span> jsem tomu pacholkovi musel napráskat.</p>
-				<p>Vzdávám <span class="sw" data-alt="poctu">hold</span> novému papežovi. <span class="sw" data-alt="Zkrátka">Holt</span> s Františkem už tolik zábavy nebude.</p>
 			</div>
 		</article>
 
 		<!-- jsi / si -->
-		<article id="jsi">
+		<article id="jsi" class="has-aside">
+			<div class="content">
+				<h2>Jsi nebo si?</h2>
+				<p>Pro spoustu lidí překvapivě náročné.</p>
+
+				<div class="rule">
+					<p><strong>JSI</strong> - tvar slovesa být, oslovení (Ty jsi…)</p>
+					<p><strong>SI</strong> - zvratné zájmeno, nahradíme <em>sebe/sobě</em> (hrál si, číst si)</p>
+				</div>
+
+				<div class="rule">
+					<p>Hrál <span class="sw" data-alt="sobě">si</span> na hřišti, dokud ho nepřepadl nějaký dědeček.</p>
+					<p>Už <strong>jsi</strong> tu měl být čtyři minuty!</p>
+				</div>
+
+				<div class="tip">💡 To samé platí pro „jsem" vs „sem" - „sem" je příslovce (pojď sem), „jsem" je sloveso být.</div>
+			</div>
 			<div class="aside">
 				<img src="jsiSi.png" alt="Meme: jsi vs si">
 				<img src="screenshot2.jpg" alt="GeekBoy screenshot">
@@ -447,44 +478,31 @@
 					<iframe src="https://www.youtube.com/embed/-dkXEUGJvZ8" title="Jsi nebo si? - YouTube Short" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 				</div>
 			</div>
-			<h2>Jsi nebo si?</h2>
-			<p>Pro spoustu lidí překvapivě náročné.</p>
-
-			<div class="rule">
-				<p><strong>JSI</strong> - tvar slovesa být, oslovení (Ty jsi…)</p>
-				<p><strong>SI</strong> - zvratné zájmeno, nahradíme <em>sebe/sobě</em> (hrál si, číst si)</p>
-			</div>
-
-			<div class="rule">
-				<p>Hrál <span class="sw" data-alt="sobě">si</span> na hřišti, dokud ho nepřepadl nějaký dědeček.</p>
-				<p>Už <strong>jsi</strong> tu měl být čtyři minuty!</p>
-			</div>
-
-			<div class="tip">💡 To samé platí pro „jsem" vs „sem" - „sem" je příslovce (pojď sem), „jsem" je sloveso být.</div>
 		</article>
 
 		<!-- sloveso být -->
-		<article id="byt">
+		<article id="byt" class="has-aside">
+			<div class="content">
+				<h2>Tvary slovesa být</h2>
+				<p>Žádné „by jsme" ani „by jste" - vždy je to jedno slovo.</p>
+
+				<table class="tbl">
+					<thead><tr><th>Osoba</th><th>Tvar</th></tr></thead>
+					<tbody>
+						<tr><td>já</td><td>bych</td></tr>
+						<tr><td>ty</td><td>bys</td></tr>
+						<tr><td>on, ona, ono</td><td>by</td></tr>
+						<tr><td>my</td><td>bychom</td></tr>
+						<tr><td>vy</td><td>byste</td></tr>
+						<tr><td>oni, ony, ona</td><td>by</td></tr>
+					</tbody>
+				</table>
+
+				<div class="tip">💡 Nikdy se v nich nepíše „j" (žádné <em>byjste</em>) a není tam tvar „jsem" (žádné <em>bysem</em>, ale <strong>bych</strong>).</div>
+			</div>
 			<div class="aside">
 				<img src="bysme.png" alt="Meme: bysme vs bychom">
 			</div>
-			<h2>Tvary slovesa být</h2>
-			<p>Žádné „by jsme" ani „by jste" - vždy je to jedno slovo.</p>
-
-			<table class="tbl">
-				<thead><tr><th>Osoba</th><th>Tvar</th></tr></thead>
-				<tbody>
-					<tr><td>já</td><td>bych</td></tr>
-					<tr><td>ty</td><td>bys</td></tr>
-					<tr><td>on, ona, ono</td><td>by</td></tr>
-					<tr><td>my</td><td>bychom</td></tr>
-					<tr><td>vy</td><td>byste</td></tr>
-					<tr><td>oni, ony, ona</td><td>by</td></tr>
-				</tbody>
-			</table>
-
-			<div class="tip">💡 Nikdy se v nich nepíše „j" (žádné <em>byjste</em>) a není tam tvar „jsem" (žádné <em>bysem</em>, ale <strong>bych</strong>).</div>
-
 		</article>
 	</main>
 
