@@ -253,6 +253,20 @@
 			article.has-aside > .aside { order: -1; }
 		}
 
+		/* ─── SHARE BTN ─── */
+		.share-btn {
+			display: inline-flex; align-items: center; gap: 6px;
+			background: var(--muted); border: 1px solid var(--border);
+			color: var(--muted-fg); font-size: 12px; font-weight: 500;
+			padding: 5px 12px; border-radius: 999px; cursor: pointer;
+			transition: all 0.15s; font-family: inherit; margin-left: 8px;
+			vertical-align: middle;
+		}
+		.share-btn:hover { color: var(--primary); border-color: var(--primary); }
+		.share-btn.copied { color: var(--ok); border-color: var(--ok); }
+		.share-btn svg { width: 14px; height: 14px; }
+		.hdr-h2 { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
+
 		/* ─── SWAP ─── */
 		.sw {
 			cursor: pointer; font-weight: 600; color: var(--accent-fg);
@@ -304,21 +318,29 @@
 		<div class="hdr-links" role="navigation" aria-label="Navigace">
 			<a href="#mneme">mně/mě</a>
 			<a href="#jiji">jí/ji</a>
+			<a href="#mneuvnitr">mě/mně ve slovech</a>
 			<a href="#typ">tip/typ</a>
 			<a href="#zhlednout">shlédnout/zhlédnout</a>
 			<a href="#vyjimka">výjimka</a>
 			<a href="#hold">holt/hold</a>
 			<a href="#jsi">jsi/si</a>
+			<a href="#sebou">s sebou/sebou</a>
+			<a href="#sz">s/z předložky</a>
+			<a href="#carky">čárky</a>
 			<a href="#byt">sloveso být</a>
 		</div>
 		<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobilní navigace">
 			<a href="#mneme">mně/mě</a>
 			<a href="#jiji">jí/ji</a>
+			<a href="#mneuvnitr">mě/mně ve slovech</a>
 			<a href="#typ">tip/typ</a>
 			<a href="#zhlednout">shlédnout/zhlédnout</a>
 			<a href="#vyjimka">výjimka</a>
 			<a href="#hold">holt/hold</a>
 			<a href="#jsi">jsi/si</a>
+			<a href="#sebou">s sebou/sebou</a>
+			<a href="#sz">s/z předložky</a>
+			<a href="#carky">čárky</a>
 			<a href="#byt">sloveso být</a>
 		</div>
 	</header>
@@ -332,7 +354,7 @@
 		<!-- mně / mě -->
 		<article id="mneme" class="has-aside">
 			<div class="content">
-				<h2>Mně nebo mě?</h2>
+				<div class="hdr-h2"><h2>Mně nebo mě?</h2><button class="share-btn" data-share="mne-me"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>Sdílet</button></div>
 				<p>Zájmena „mně" a „mě" si lidé často pletou. Jak si to zapamatovat?</p>
 
 				<div class="chat">
@@ -368,7 +390,7 @@
 		<!-- jí / ji -->
 		<article id="jiji" class="has-aside">
 			<div class="content">
-				<h2>Jí nebo ji?</h2>
+				<div class="hdr-h2"><h2>Jí nebo ji?</h2><button class="share-btn" data-share="ji-ji"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>Sdílet</button></div>
 				<p>Další zapeklitá zájmena - ale během minuty ti to začne dávat smysl.</p>
 
 				<div class="rule">
@@ -389,10 +411,34 @@
 			</div>
 		</article>
 
+		<!-- mě/mně uvnitř slov -->
+		<article id="mneuvnitr">
+			<div class="hdr-h2"><h2>Mě/mně uvnitř slov</h2><button class="share-btn" data-share="me-mne-ve-slovech"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>Sdílet</button></div>
+			<p>Lidi často aplikují pravidlo mně/mě i uvnitř slov, kde neplatí. Tady rozhoduje tvar slova, ne zájmeno.</p>
+
+			<div class="rule">
+				<p><strong>MĚ</strong> píšeme v: rozuměl, zaměstnanec, změna, směr, měřit, město, naměkko</p>
+				<p><strong>MNĚ</strong> píšeme v: domněnka, pomněnka, zapomněl, vzpomněl, mněl (domníval)</p>
+			</div>
+
+			<div class="tip">💡 Pokud slovo nemá nic společného se zájmenem "mně/mě", řiď se podle slovníku - nejde to odvodit trikem s Pepou.</div>
+
+			<div class="chat">
+				<div class="msg"><span class="who">Rohlík:</span> Ten za<span class="no">mně</span>stnanec to po<span class="no">mně</span>nil.</div>
+				<div class="msg"><span class="who">Rohlík:</span> Ten za<span class="ok">mě</span>stnanec to po<span class="ok">mě</span>nil.</div>
+			</div>
+
+			<div class="rule">
+				<p>Častá chyba: <span class="no">rozumněl</span> → <span class="ok">rozuměl</span></p>
+				<p>Častá chyba: <span class="no">zamněstnanec</span> → <span class="ok">zaměstnanec</span></p>
+				<p>Častá chyba: <span class="no">zapoměl</span> → <span class="ok">zapomněl</span></p>
+			</div>
+		</article>
+
 		<!-- tip / typ -->
 		<article id="typ" class="has-aside">
 			<div class="content">
-				<h2>Tip nebo typ?</h2>
+				<div class="hdr-h2"><h2>Tip nebo typ?</h2><button class="share-btn" data-share="tip-typ"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>Sdílet</button></div>
 				<p>Na první pohled totožná slova, ale „íčko" kompletně mění význam.</p>
 
 				<div class="rule">
@@ -413,7 +459,7 @@
 
 		<!-- shlédnout / zhlédnout -->
 		<article id="zhlednout">
-			<h2>Shlédnout, zhlédnout, vzhlédnout</h2>
+			<div class="hdr-h2"><h2>Shlédnout, zhlédnout, vzhlédnout</h2><button class="share-btn" data-share="shlednout-zhlednout"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>Sdílet</button></div>
 			<p>Velmi častá chyba nejen na Discordu.</p>
 
 			<div class="rule">
@@ -425,7 +471,7 @@
 
 		<!-- výjimka -->
 		<article id="vyjimka">
-			<h2>Vyjímka nebo výjimka?</h2>
+			<div class="hdr-h2"><h2>Vyjímka nebo výjimka?</h2><button class="share-btn" data-share="vyjimka"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>Sdílet</button></div>
 			<p>V tomto chybuje téměř každý.</p>
 
 			<div class="rule">
@@ -437,7 +483,7 @@
 		<!-- holt / hold -->
 		<article id="hold" class="has-aside">
 			<div class="content">
-				<h2>Holt, či hold?</h2>
+				<div class="hdr-h2"><h2>Holt, či hold?</h2><button class="share-btn" data-share="holt-hold"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>Sdílet</button></div>
 				<p>Vypadají podobně, ale význam je úplně jiný.</p>
 
 				<div class="rule">
@@ -459,7 +505,7 @@
 		<!-- jsi / si -->
 		<article id="jsi" class="has-aside">
 			<div class="content">
-				<h2>Jsi nebo si?</h2>
+				<div class="hdr-h2"><h2>Jsi nebo si?</h2><button class="share-btn" data-share="jsi-si"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>Sdílet</button></div>
 				<p>Pro spoustu lidí překvapivě náročné.</p>
 
 				<div class="rule">
@@ -486,7 +532,7 @@
 		<!-- sloveso být -->
 		<article id="byt" class="has-aside">
 			<div class="content">
-				<h2>Tvary slovesa být</h2>
+				<div class="hdr-h2"><h2>Tvary slovesa být</h2><button class="share-btn" data-share="sloveso-byt"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>Sdílet</button></div>
 				<p>Žádné „by jsme" ani „by jste" - vždy je to jedno slovo.</p>
 
 				<table class="tbl">
@@ -507,9 +553,88 @@
 				<img src="bysme.png" alt="Meme: bysme vs bychom">
 			</div>
 		</article>
+
+		<!-- sebou / s sebou -->
+		<article id="sebou">
+			<div class="hdr-h2"><h2>Sebou nebo s sebou?</h2><button class="share-btn" data-share="sebou-s-sebou"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>Sdílet</button></div>
+			<p>Jedna z nejčastějších chyb v běžné komunikaci.</p>
+
+			<div class="rule">
+				<p><strong>S SEBOU</strong> - když něco bereš, neseš, máš (vezmi s sebou, měl s sebou)</p>
+				<p><strong>SEBOU</strong> - pouze ve spojení s pohybem vlastního těla (házel sebou, trhl sebou, hodil sebou)</p>
+			</div>
+
+			<div class="chat">
+				<div class="msg"><span class="who">pepa_z_depa:</span> Vezmi <span class="no">sebou</span> bundu.</div>
+				<div class="msg"><span class="who">pepa_z_depa:</span> Vezmi <span class="ok">s sebou</span> bundu.</div>
+			</div>
+
+			<div class="tip">💡 Pokud můžeš říct "s ním/s ní" ve stejném smyslu, piš <strong>s sebou</strong>. "Sebou" bez "s" jen když se tělem pohybuje.</div>
+
+			<div class="rule">
+				<p><span class="ok">Vzal s sebou</span> peněženku. (vzal s ním = dává smysl)</p>
+				<p><span class="ok">Trhl sebou</span>, když to uslyšel. (pohyb těla)</p>
+				<p><span class="no">Nemáš sebou</span> klíče? → <span class="ok">Nemáš s sebou</span> klíče?</p>
+			</div>
+		</article>
+
+		<!-- s/z předložky -->
+		<article id="sz">
+			<div class="hdr-h2"><h2>S nebo z? (předložky)</h2><button class="share-btn" data-share="s-z-predlozky"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>Sdílet</button></div>
+			<p>"Jdu s práce" nebo "jdu z práce"? Tohle trápí skoro každého.</p>
+
+			<div class="rule">
+				<p><strong>Z</strong> - odkud? směr pryč z místa (z domu, z práce, z obchodu)</p>
+				<p><strong>S</strong> - s kým? s čím? společnost nebo povrch dolů (s kamarádem, sundej to s police)</p>
+			</div>
+
+			<div class="tip">💡 Zeptej se "odkud?" - pokud to dává smysl, piš <strong>z</strong>. Zeptej se "s kým/čím?" - pokud dává smysl, piš <strong>s</strong>.</div>
+
+			<div class="chat">
+				<div class="msg"><span class="who">Rohlík:</span> Jdu <span class="no">s</span> práce <span class="no">z</span> kamarádem.</div>
+				<div class="msg"><span class="who">Rohlík:</span> Jdu <span class="ok">z</span> práce <span class="ok">s</span> kamarádem.</div>
+			</div>
+
+			<div class="rule">
+				<p><span class="ok">Z domu</span> - odkud? z domu. (směr)</p>
+				<p><span class="ok">S bratrem</span> - s kým? s bratrem. (společnost)</p>
+				<p><span class="ok">S kopce</span> - dolů z povrchu (směr dolů = s)</p>
+			</div>
+		</article>
+
+		<!-- čárky -->
+		<article id="carky">
+			<div class="hdr-h2"><h2>Čárky před že, aby, když, který</h2><button class="share-btn" data-share="carky"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>Sdílet</button></div>
+			<p>Nejčastější chyba v písemném projevu vůbec. Pravidlo je přitom jednoduché.</p>
+
+			<div class="rule">
+				<p>Před <strong>že, aby, kdyby, když, který, jenž, protože, přestože</strong> se čárka píše <strong>vždy</strong>, pokud nejsou na začátku věty.</p>
+			</div>
+
+			<div class="chat">
+				<div class="msg"><span class="who">pepa_z_depa:</span> Řekl mi<span class="no"> </span>že to udělá<span class="no"> </span>když bude mít čas.</div>
+				<div class="msg"><span class="who">pepa_z_depa:</span> Řekl mi<span class="ok">,</span> že to udělá<span class="ok">,</span> když bude mít čas.</div>
+			</div>
+
+			<div class="tip">💡 Jednoduché pravidlo: vidíš <strong>že/aby/když/který</strong>? Dej před něj čárku. Výjimka je začátek věty a ustálená spojení (jen aby, jen když).</div>
+
+			<div class="rule">
+				<p><span class="ok">Myslím, že</span> to bude fajn.</p>
+				<p><span class="ok">Koupil jsem auto, které</span> jsem vždycky chtěl.</p>
+				<p><span class="ok">Udělám to, aby</span> byl spokojený.</p>
+				<p><span class="ok">Nevěděl jsem, kdy</span> přijde.</p>
+			</div>
+
+			<div class="rule">
+				<p>Před <strong>a, nebo, ani</strong> se čárka <strong>nepíše</strong>, pokud spojují rovnocenné části.</p>
+				<p>Ale pozor - před <strong>a</strong> se píše čárka, pokud uvozuje vedlejší větu: <span class="ok">Přišel domů, a když uviděl ten bordel, zděsil se.</span></p>
+			</div>
+		</article>
+
 	</main>
 
 	<footer>
+		<p style="color:var(--fg); margin-bottom: 12px;">Toto je z části seriozní stránka, takže se prosím nenaštvěte na člověka, který vám ji poslal - myslí to s vámi dobře. :)</p>
 		<div class="fb">Projekt <a href="https://smirkhat.org">SmirkHat.org</a></div>
 		<div class="credits">
 			<span><a href="https://github.com/danielsebesta">Dast</a> - kódování</span>
@@ -538,6 +663,24 @@
 			a.addEventListener('click', () => {
 				menu.classList.remove('open');
 				btn.setAttribute('aria-expanded', 'false');
+			});
+		});
+
+		// Share buttons
+		document.querySelectorAll('.share-btn').forEach(btn => {
+			btn.addEventListener('click', () => {
+				const slug = btn.getAttribute('data-share');
+				const url = 'https://cestina.top/' + slug;
+				navigator.clipboard.writeText(url).then(() => {
+					btn.classList.add('copied');
+					btn.querySelector('svg').style.display = 'none';
+					const orig = btn.textContent;
+					btn.textContent = 'Zkopirováno!';
+					setTimeout(() => {
+						btn.classList.remove('copied');
+						btn.innerHTML = '<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>Sdílet';
+					}, 1500);
+				});
 			});
 		});
 	</script>
