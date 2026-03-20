@@ -3,11 +3,11 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Čeština — Nauč se to jednou provždy!</title>
+	<title>Čeština - Nauč se to jednou provždy!</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- SEO -->
-	<meta name="description" content="Přehledný průvodce nejčastějšími chybami v češtině: mně/mě, jí/ji, tip/typ, shlédnout/zhlédnout, výjimka, holt/hold, jsi/si a sloveso být. Nauč se to jednou provždy!">
+	<meta name="description" content="Přehledný průvodce nejčastějšími chybami v češtině: mně/mě, jí/ji, tip/typ, shlédnout/zhlédnout, výjimka, holt/hold, jsi/si a sloveso být.">
 	<meta name="author" content="SmirkHat">
 	<meta name="keywords" content="čeština, pravopis, mně mě, jí ji, tip typ, výjimka, holt hold, jsi si, bychom, český jazyk, gramatika">
 	<link rel="canonical" href="https://cestina.top/">
@@ -16,15 +16,14 @@
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="https://cestina.top/">
 	<meta property="og:title" content="Nauč se česky jednou provždy!">
-	<meta property="og:description" content="Přehledný průvodce nejčastějšími chybami v češtině. Mně nebo mě? Tip nebo typ? Shlédnout nebo zhlédnout? Jí nebo ji?">
+	<meta property="og:description" content="Mně nebo mě? Tip nebo typ? Jí nebo ji? Přehledný průvodce nejčastějšími chybami v češtině.">
 	<meta property="og:site_name" content="cestina.top">
 	<meta property="og:locale" content="cs_CZ">
 
 	<!-- Twitter / Discord -->
-	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:card" content="summary">
 	<meta name="twitter:title" content="Nauč se česky jednou provždy!">
-	<meta name="twitter:description" content="Přehledný průvodce nejčastějšími chybami v češtině. Mně nebo mě? Tip nebo typ? Jí nebo ji?">
-
+	<meta name="twitter:description" content="Mně nebo mě? Tip nebo typ? Jí nebo ji? Přehledný průvodce nejčastějšími chybami v češtině.">
 	<meta name="theme-color" content="#f59e0b">
 
 	<!-- Geist Font -->
@@ -42,299 +41,246 @@
 		*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 		:root {
-			/* smirkhat.org design tokens */
-			--background: #171717;
-			--foreground: #e5e5e5;
-			--card: #222222;
-			--card-foreground: #e5e5e5;
+			--bg: #171717;
+			--fg: #e5e5e5;
+			--card: #222;
+			--card-fg: #e5e5e5;
+			--muted: #262626;
+			--muted-fg: #a3a3a3;
 			--primary: #f59e0b;
-			--primary-foreground: #000000;
-			--secondary: #222222;
-			--muted: #222222;
-			--muted-foreground: #a3a3a3;
+			--primary-fg: #000;
 			--accent: #92400e;
-			--accent-foreground: #fde68a;
-			--border: #404040;
-			--destructive: #ef4444;
-			--correct: #4ade80;
-			--correct-bg: #052e16;
-			--incorrect: #f87171;
-			--incorrect-bg: #450a0a;
-			--radius: 1.5rem;
+			--accent-fg: #fde68a;
+			--border: #333;
+			--ok: #4ade80;
+			--err: #f87171;
+			--r: 12px;
 			color-scheme: dark;
 		}
 
 		@media (prefers-color-scheme: light) {
 			:root {
-				--background: #fafafa;
-				--foreground: #171717;
-				--card: #ffffff;
-				--card-foreground: #171717;
-				--primary: #f59e0b;
-				--primary-foreground: #000000;
-				--secondary: #f5f5f5;
+				--bg: #fafafa;
+				--fg: #171717;
+				--card: #fff;
+				--card-fg: #171717;
 				--muted: #f5f5f5;
-				--muted-foreground: #737373;
-				--accent: #92400e;
-				--accent-foreground: #451a03;
+				--muted-fg: #737373;
+				--accent-fg: #451a03;
 				--border: #e5e5e5;
-				--correct: #16a34a;
-				--correct-bg: #dcfce7;
-				--incorrect: #dc2626;
-				--incorrect-bg: #fee2e2;
+				--ok: #16a34a;
+				--err: #dc2626;
 				color-scheme: light;
 			}
 		}
 
-		html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+		html { scroll-behavior: smooth; scroll-padding-top: 100px; }
 
 		body {
-			font-family: 'Geist', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-			background-color: var(--background);
-			color: var(--foreground);
-			line-height: 1.7;
-			font-size: 16px;
+			font-family: 'Geist', system-ui, sans-serif;
+			background: var(--bg); color: var(--fg);
+			line-height: 1.65; font-size: 16px;
 			-webkit-font-smoothing: antialiased;
 		}
 
-		/* ── Nav ── */
-		nav {
+		/* ─── NAV ─── */
+		header {
 			position: sticky; top: 0; z-index: 100;
 			border-bottom: 1px solid var(--border);
 			backdrop-filter: blur(16px) saturate(180%);
 			-webkit-backdrop-filter: blur(16px) saturate(180%);
-			background: color-mix(in srgb, var(--background) 80%, transparent);
+			background: color-mix(in srgb, var(--bg) 80%, transparent);
 		}
-		.nav-bar {
-			max-width: 760px; margin: 0 auto; padding: 0 20px;
-			display: flex; align-items: center;
-			justify-content: space-between; flex-wrap: wrap;
+		.hdr-top {
+			max-width: 680px; margin: 0 auto; padding: 0 24px;
+			display: flex; align-items: center; justify-content: space-between;
+			height: 48px;
 		}
-		.nav-brand-row {
-			width: 100%; display: flex; align-items: center; justify-content: space-between;
-			height: 56px;
+		.brand { font-weight: 700; font-size: 15px; color: var(--fg); text-decoration: none; }
+		.brand:hover { text-decoration: none; color: var(--primary); }
+		.menu-btn {
+			display: none; background: none; border: none; color: var(--fg);
+			cursor: pointer; padding: 6px; border-radius: 8px;
 		}
-		.nav-brand {
-			font-weight: 600; font-size: 15px; color: var(--foreground);
-			text-decoration: none; white-space: nowrap;
+		.menu-btn:hover { background: var(--muted); }
+		.menu-btn svg { display: block; }
+		.hdr-links {
+			max-width: 680px; margin: 0 auto; padding: 0 24px 10px;
+			display: flex; gap: 2px; flex-wrap: nowrap; overflow-x: auto;
+			-webkit-overflow-scrolling: touch; scrollbar-width: none;
 		}
-		.nav-brand:hover { text-decoration: none; }
-		.nav-links {
-			display: flex; gap: 4px; align-items: center;
-			overflow: hidden; flex-wrap: nowrap;
-			width: 100%; padding: 0 0 12px; justify-content: center;
+		.hdr-links::-webkit-scrollbar { display: none; }
+		.hdr-links a {
+			color: var(--muted-fg); text-decoration: none; font-size: 13px;
+			font-weight: 500; padding: 5px 12px; border-radius: 999px;
+			white-space: nowrap; transition: all 0.15s;
 		}
-		.nav-links a {
-			color: var(--muted-foreground); text-decoration: none; font-size: 14px; font-weight: 500;
-			padding: 6px 14px; border-radius: 999px; transition: all 0.2s; white-space: nowrap;
-		}
-		.nav-links a:hover {
+		.hdr-links a:hover {
 			color: var(--primary);
 			background: color-mix(in srgb, var(--primary) 10%, transparent);
 		}
-		.nav-toggle {
-			display: none; background: none; border: none; cursor: pointer;
-			color: var(--foreground); padding: 8px; border-radius: 8px;
-			transition: background 0.2s;
+		.mobile-menu {
+			display: none; flex-direction: column; gap: 2px;
+			padding: 8px 24px 16px; max-width: 680px; margin: 0 auto;
 		}
-		.nav-toggle:hover { background: var(--muted); }
-		.nav-toggle svg { display: block; }
-		.nav-mobile {
-			display: none; flex-direction: column; padding: 8px 20px 16px;
-			max-width: 760px; margin: 0 auto; gap: 2px;
+		.mobile-menu.open { display: flex; }
+		.mobile-menu a {
+			color: var(--muted-fg); text-decoration: none; font-size: 15px;
+			font-weight: 500; padding: 10px 14px; border-radius: var(--r);
+			transition: all 0.15s;
 		}
-		.nav-mobile a {
-			color: var(--muted-foreground); text-decoration: none; font-size: 15px; font-weight: 500;
-			padding: 10px 14px; border-radius: 10px; transition: all 0.2s;
-		}
-		.nav-mobile a:hover {
-			color: var(--primary); background: color-mix(in srgb, var(--primary) 10%, transparent);
-		}
-		.nav-mobile.open { display: flex; }
-		@media (max-width: 768px) {
-			.nav-links { display: none; }
-			.nav-toggle { display: block; }
-		}
-
-		/* ── Main ── */
-		main { max-width: 760px; margin: 0 auto; padding: 0 20px 80px; }
-
-		/* ── Hero ── */
-		.hero {
-			text-align: center;
-			padding: 80px 0 48px;
-			display: flex; flex-direction: column; align-items: center;
-		}
-		.hero h1 {
-			font-size: clamp(2.5rem, 7vw, 3.75rem); font-weight: 700;
-			line-height: 1.08; letter-spacing: -0.04em; margin-bottom: 16px;
-		}
-		.hero .gradient {
-			background: linear-gradient(135deg, var(--primary), var(--accent));
-			-webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-		}
-		.hero p {
-			color: var(--muted-foreground); font-size: 1.25rem;
-			max-width: 500px; line-height: 1.6; text-wrap: balance;
-		}
-
-		/* ── Sections ── */
-		section { margin-top: 56px; padding-top: 8px; }
-		section h2 {
-			font-size: 1.5rem; font-weight: 700; letter-spacing: -0.02em;
-			margin-bottom: 12px; line-height: 1.3;
-		}
-		section > p { margin-bottom: 16px; color: var(--muted-foreground); }
-
-		/* ── Two-col with meme ── */
-		.with-meme { display: grid; grid-template-columns: 1fr; gap: 24px; }
-		.meme { margin: 0 auto; }
-		.meme img {
-			width: 100%; max-width: 400px; border-radius: var(--radius);
-			border: 1px solid var(--border);
-			box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-		}
-		@media (min-width: 768px) {
-			.with-meme { grid-template-columns: 1fr 260px; align-items: start; }
-			.meme img { max-width: 260px; }
-		}
-
-		/* ── Chat bubbles ── */
-		.chat {
-			display: flex; flex-direction: column; gap: 6px;
-			margin: 20px 0; background: var(--muted); border-radius: var(--radius); padding: 12px;
-		}
-		.msg {
-			background: var(--background); border-radius: calc(var(--radius) - 4px);
-			padding: 12px 16px; display: flex; gap: 10px; align-items: baseline;
-			font-size: 15px; line-height: 1.6;
-		}
-		.msg .name {
-			font-family: 'Geist Mono', ui-monospace, monospace; font-weight: 500;
-			font-size: 13px; color: var(--primary); white-space: nowrap;
-		}
-		.wrong { color: var(--incorrect); font-weight: 600; text-decoration: line-through; text-decoration-thickness: 2px; }
-		.right { color: var(--correct); font-weight: 600; }
-
-		/* ── Cards — matching shadcn/ui card ── */
-		.card {
-			background: var(--card); border: 1px solid var(--border);
-			border-radius: var(--radius); padding: 24px;
-			margin: 20px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-		}
-		.card p { margin-bottom: 10px; color: var(--card-foreground); }
-		.card p:last-child { margin-bottom: 0; }
-		.card strong { color: var(--primary); }
-
-		/* ── Tip box ── */
-		.tip {
+		.mobile-menu a:hover {
+			color: var(--primary);
 			background: color-mix(in srgb, var(--primary) 10%, transparent);
-			border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
-			border-radius: calc(var(--radius) - 4px);
-			padding: 16px 20px; margin: 20px 0; font-weight: 500; font-size: 15px;
-			color: var(--accent-foreground);
 		}
-		.tip::before { content: "💡 "; }
+		@media (max-width: 640px) {
+			.hdr-links { display: none; }
+			.menu-btn { display: block; }
+		}
 
-		/* ── Examples ── */
-		.examples { display: grid; gap: 6px; margin: 20px 0; }
-		.ex {
+		/* ─── LAYOUT ─── */
+		main { max-width: 680px; margin: 0 auto; padding: 0 24px 96px; }
+
+		/* ─── HERO ─── */
+		.hero { text-align: center; padding: 64px 0 0; }
+		.hero h1 {
+			font-size: clamp(2rem, 6vw, 3rem); font-weight: 700;
+			line-height: 1.1; letter-spacing: -0.03em; margin-bottom: 12px;
+		}
+		.hero .gr {
+			background: linear-gradient(135deg, var(--primary), var(--accent));
+			-webkit-background-clip: text; -webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+		.hero p { color: var(--muted-fg); font-size: 1.1rem; }
+
+		/* ─── SECTIONS ─── */
+		article {
+			margin-top: 48px; padding: 32px;
 			background: var(--card); border: 1px solid var(--border);
-			border-radius: calc(var(--radius) - 4px);
-			padding: 14px 18px; font-family: 'Geist Mono', ui-monospace, monospace;
-			font-size: 14px; line-height: 1.6;
-			display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px;
+			border-radius: 16px;
 		}
-		.ex .arr { color: var(--muted-foreground); margin: 0 2px; }
+		article h2 {
+			font-size: 1.35rem; font-weight: 700; letter-spacing: -0.01em;
+			margin-bottom: 8px;
+		}
+		article > p { color: var(--muted-fg); margin-bottom: 16px; }
+		article > p:last-child { margin-bottom: 0; }
+		article hr { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
 
-		/* ── Table ── */
+		/* ─── RULE BLOCK ─── */
+		.rule {
+			background: var(--muted); border-radius: var(--r); padding: 16px 20px;
+			margin: 16px 0;
+		}
+		.rule p { margin-bottom: 6px; }
+		.rule p:last-child { margin-bottom: 0; }
+		.rule strong { color: var(--primary); }
+
+		/* ─── TIP ─── */
+		.tip {
+			background: color-mix(in srgb, var(--primary) 8%, transparent);
+			border-left: 3px solid var(--primary);
+			border-radius: 0 var(--r) var(--r) 0;
+			padding: 14px 18px; margin: 16px 0;
+			font-size: 15px; font-weight: 500; color: var(--accent-fg);
+		}
+
+		/* ─── CHAT ─── */
+		.chat { display: flex; flex-direction: column; gap: 4px; margin: 16px 0; }
+		.msg {
+			background: var(--muted); border-radius: var(--r);
+			padding: 10px 14px; display: flex; gap: 8px; align-items: baseline;
+			font-size: 15px;
+		}
+		.msg .who {
+			font-family: 'Geist Mono', monospace; font-size: 12px;
+			font-weight: 500; color: var(--primary); white-space: nowrap;
+		}
+		.no { color: var(--err); font-weight: 600; text-decoration: line-through; text-decoration-thickness: 2px; }
+		.ok { color: var(--ok); font-weight: 600; }
+
+		/* ─── EXAMPLES ─── */
+		.exs { display: grid; gap: 4px; margin: 16px 0; }
+		.ex {
+			background: var(--muted); border-radius: var(--r); padding: 10px 14px;
+			font-family: 'Geist Mono', monospace; font-size: 13px; line-height: 1.5;
+		}
+		.arr { color: var(--muted-fg); }
+
+		/* ─── TABLE ─── */
 		.tbl {
 			width: 100%; border-collapse: separate; border-spacing: 0;
-			margin: 20px 0; border-radius: var(--radius); overflow: hidden;
-			border: 1px solid var(--border);
+			margin: 16px 0; border-radius: var(--r); overflow: hidden;
+			border: 1px solid var(--border); font-size: 15px;
 		}
-		.tbl th, .tbl td { padding: 11px 18px; text-align: left; }
+		.tbl th, .tbl td { padding: 10px 16px; text-align: left; }
 		.tbl th {
-			background: var(--primary); color: var(--primary-foreground);
-			font-weight: 600; font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em;
+			background: var(--primary); color: var(--primary-fg);
+			font-weight: 600; font-size: 12px; text-transform: uppercase;
+			letter-spacing: 0.05em;
 		}
-		.tbl td {
-			background: var(--card); border-bottom: 1px solid var(--border); font-size: 15px;
-		}
+		.tbl td { background: var(--card); border-bottom: 1px solid var(--border); }
 		.tbl tr:last-child td { border-bottom: none; }
-		.tbl td:first-child { font-weight: 500; color: var(--muted-foreground); white-space: nowrap; }
+		.tbl td:first-child { font-weight: 500; color: var(--muted-fg); }
 
-		/* ── Divider ── */
-		hr { border: none; border-top: 1px solid var(--border); margin: 56px 0 0; }
-
-		/* ── Screenshot ── */
-		.screenshot {
-			border-radius: var(--radius); max-width: 400px; width: 100%; margin: 16px 0;
-			border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+		/* ─── MEDIA ─── */
+		.media { display: flex; gap: 16px; flex-wrap: wrap; margin: 16px 0; align-items: flex-start; }
+		.media img {
+			border-radius: var(--r); border: 1px solid var(--border);
+			max-width: 260px; width: 100%;
 		}
+		.shorts {
+			border-radius: var(--r); overflow: hidden;
+			border: 1px solid var(--border); width: 280px; max-width: 100%;
+		}
+		.shorts iframe { display: block; width: 100%; height: 498px; border: none; }
 
-		/* ── Footer ── */
+		/* ─── SWAP ─── */
+		.sw {
+			cursor: pointer; font-weight: 600; color: var(--accent-fg);
+			border-bottom: 1px dashed var(--primary); transition: color 0.15s;
+		}
+		.sw:hover { color: var(--primary); }
+
+		/* ─── FOOTER ─── */
 		footer {
-			text-align: center; padding: 48px 20px; color: var(--muted-foreground);
-			font-size: 13px; border-top: 1px solid var(--border); line-height: 1.8;
+			max-width: 680px; margin: 0 auto;
+			text-align: center; padding: 32px 24px;
+			color: var(--muted-fg); font-size: 13px;
+			border-top: 1px solid var(--border); line-height: 1.8;
 		}
-		footer a {
-			color: var(--muted-foreground); text-decoration: underline;
-			text-underline-offset: 3px; text-decoration-thickness: 1px;
-		}
+		footer a { color: var(--muted-fg); text-decoration: underline; text-underline-offset: 3px; }
 		footer a:hover { color: var(--primary); }
-		footer .footer-brand {
-			display: block; font-size: 15px; font-weight: 600;
-			color: var(--foreground); margin-bottom: 8px;
+		footer .fb {
+			display: block; font-size: 14px; font-weight: 600;
+			color: var(--fg); margin-bottom: 6px;
 		}
-		footer .footer-brand a { color: var(--primary); text-decoration: none; font-weight: 700; }
-		footer .footer-brand a:hover { text-decoration: underline; }
+		footer .fb a { color: var(--primary); text-decoration: none; font-weight: 700; }
+		footer .fb a:hover { text-decoration: underline; }
 
-		/* ── Links ── */
-		a { color: var(--primary); text-decoration: none; transition: color 0.2s; }
+		/* ─── GLOBAL ─── */
+		a { color: var(--primary); text-decoration: none; }
 		a:hover { text-decoration: underline; }
+		:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
 
-
-		/* ── YouTube Shorts embed ── */
-		.shorts-embed {
-			margin: 20px 0; border-radius: var(--radius); overflow: hidden;
-			border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-			width: 325px; max-width: 100%;
+		@media (max-width: 480px) {
+			article { padding: 20px; margin-top: 32px; }
+			.hero { padding-top: 40px; }
+			.media img { max-width: 200px; }
 		}
-		.shorts-embed iframe {
-			display: block; width: 100%; height: 578px; border: none;
-		}
-
-		/* ── Interactive swap (hover to reveal) ── */
-		.swap {
-			cursor: pointer; font-weight: 600; color: var(--accent-foreground);
-			border-bottom: 1px dashed var(--primary); transition: all 0.2s;
-		}
-		.swap:hover { color: var(--primary); }
 	</style>
 </head>
 
 <body>
-	<nav>
-		<div class="nav-bar">
-			<div class="nav-brand-row">
-				<a href="#" class="nav-brand">cestina.top</a>
-				<button class="nav-toggle" id="navToggle" aria-label="Menu">
-					<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-				</button>
-			</div>
-			<div class="nav-links">
-				<a href="#mneme">mně/mě</a>
-				<a href="#jiji">jí/ji</a>
-				<a href="#typ">tip/typ</a>
-				<a href="#zhlednout">shlédnout/zhlédnout</a>
-				<a href="#vyjimka">výjimka</a>
-				<a href="#hold">holt/hold</a>
-				<a href="#jsi">jsi/si</a>
-				<a href="#byt">sloveso být</a>
-			</div>
+	<header>
+		<div class="hdr-top">
+			<a href="#" class="brand">cestina.top</a>
+			<button class="menu-btn" id="menuBtn" aria-label="Otevřít menu" aria-expanded="false">
+				<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 5h14M3 10h14M3 15h14"/></svg>
+			</button>
 		</div>
-		<div class="nav-mobile" id="navMobile">
+		<div class="hdr-links" role="navigation" aria-label="Navigace">
 			<a href="#mneme">mně/mě</a>
 			<a href="#jiji">jí/ji</a>
 			<a href="#typ">tip/typ</a>
@@ -344,49 +290,39 @@
 			<a href="#jsi">jsi/si</a>
 			<a href="#byt">sloveso být</a>
 		</div>
-	</nav>
+		<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobilní navigace">
+			<a href="#mneme">mně/mě</a>
+			<a href="#jiji">jí/ji</a>
+			<a href="#typ">tip/typ</a>
+			<a href="#zhlednout">shlédnout/zhlédnout</a>
+			<a href="#vyjimka">výjimka</a>
+			<a href="#hold">holt/hold</a>
+			<a href="#jsi">jsi/si</a>
+			<a href="#byt">sloveso být</a>
+		</div>
+	</header>
 
 	<main>
 		<div class="hero">
-			<h1><span class="gradient">Čeština</span> — nauč se to jednou provždy!</h1>
+			<h1><span class="gr">Čeština</span> - nauč se to jednou provždy!</h1>
 			<p>Přehledný průvodce nejčastějšími chybami v češtině</p>
 		</div>
 
-		<!-- ═══ mně / mě ═══ -->
-		<section id="mneme">
-			<div class="with-meme">
-				<div>
-					<h2>Nauč se mně/mě jednou provždy!</h2>
-					<p>Zájmena „mně" a „mě" si lidé často pletou. Jak si to jednoduše zapamatovat?</p>
+		<!-- mně / mě -->
+		<article id="mneme">
+			<h2>Mně nebo mě?</h2>
+			<p>Zájmena „mně" a „mě" si lidé často pletou. Jak si to zapamatovat?</p>
 
-					<div class="chat">
-						<div class="msg">
-							<span class="name">Rohlík:</span>
-							<span>Za <span class="wrong">mně</span> fajn.</span>
-						</div>
-						<div class="msg">
-							<span class="name">pepa_z_depa:</span>
-							<span><span class="wrong">Mě</span> žral Chrome hrozně moc RAMky</span>
-						</div>
-					</div>
-
-					<p>Správně je to takto:</p>
-
-					<div class="chat">
-						<div class="msg">
-							<span class="name">Rohlík:</span>
-							<span>Za <span class="right">mě</span> fajn.</span>
-						</div>
-						<div class="msg">
-							<span class="name">pepa_z_depa:</span>
-							<span><span class="right">Mně</span> žral Chrome hrozně moc RAMky</span>
-						</div>
-					</div>
-				</div>
-				<div class="meme">
-					<img src="mneMe.png" alt="Meme: mně vs mě">
-				</div>
+			<div class="chat">
+				<div class="msg"><span class="who">Rohlík:</span> Za <span class="no">mně</span> fajn.</div>
+				<div class="msg"><span class="who">pepa_z_depa:</span> <span class="no">Mě</span> žral Chrome hrozně moc RAMky</div>
 			</div>
+			<div class="chat">
+				<div class="msg"><span class="who">Rohlík:</span> Za <span class="ok">mě</span> fajn.</div>
+				<div class="msg"><span class="who">pepa_z_depa:</span> <span class="ok">Mně</span> žral Chrome hrozně moc RAMky</div>
+			</div>
+
+			<div class="tip">💡 Tobě → <strong>mně</strong> &nbsp;|&nbsp; Tebe → <strong>mě</strong></div>
 
 			<table class="tbl">
 				<thead><tr><th>Pád</th><th>Tvar</th></tr></thead>
@@ -401,218 +337,194 @@
 				</tbody>
 			</table>
 
-			<div class="tip">Tobě → <strong>mně</strong> &nbsp;|&nbsp; Tebe → <strong>mě</strong></div>
-
-			<div class="examples">
-				<div class="ex">Dáš to m__? <span class="arr">→</span> Dáš to <span class="swap" data-alt="Tobě">Pep<strong>ovi</strong></span> <span class="arr">→</span> <span class="right">mně</span></div>
-				<div class="ex">Podle m__ <span class="arr">→</span> Podle <span class="swap" data-alt="Tebe">Pep<strong>y</strong></span> <span class="arr">→</span> <span class="right">mě</span></div>
-				<div class="ex">Za m__ fajn. <span class="arr">→</span> Za <span class="swap" data-alt="Tebe">Pep<strong>u</strong></span> fajn. <span class="arr">→</span> <span class="right">mě</span></div>
-				<div class="ex">M__ se to líbilo. <span class="arr">→</span> <span class="swap" data-alt="Tobě">Pep<strong>ovi</strong></span> se to líbilo. <span class="arr">→</span> <span class="right">mně</span></div>
+			<div class="exs">
+				<div class="ex">Dáš to m__? <span class="arr">→</span> <span class="sw" data-alt="Tobě">Pep<strong>ovi</strong></span> <span class="arr">→</span> <span class="ok">mně</span></div>
+				<div class="ex">Podle m__ <span class="arr">→</span> <span class="sw" data-alt="Tebe">Pep<strong>y</strong></span> <span class="arr">→</span> <span class="ok">mě</span></div>
+				<div class="ex">Za m__ fajn. <span class="arr">→</span> <span class="sw" data-alt="Tebe">Pep<strong>u</strong></span> <span class="arr">→</span> <span class="ok">mě</span></div>
+				<div class="ex">M__ se to líbilo. <span class="arr">→</span> <span class="sw" data-alt="Tobě">Pep<strong>ovi</strong></span> <span class="arr">→</span> <span class="ok">mně</span></div>
 			</div>
 
-			<div class="card">
-				<p>💡 <strong>Fígl!</strong> Pokud ti trik s tebe/tobě nějak nejde do hlavy, nahraď si zájmeno jménem — třeba Pepou nebo Vaškem. Jestli má koncovka 1 písmeno → <strong>mě</strong>. Jestli má 3 písmena → <strong>mně</strong>.</p>
+			<div class="rule">
+				<p>💡 Pokud ti trik s tebe/tobě nejde do hlavy, nahraď si zájmeno jménem - třeba Pepou. Koncovka má 1 písmeno → <strong>mě</strong>. Má 3 písmena → <strong>mně</strong>.</p>
 			</div>
 
-			<img class="screenshot" src="screenshot.jpg" alt="Doporučení od Hogůšíků — 10/10 Hogůšíků doporučuje">
-
-			<div class="shorts-embed">
-				<iframe src="https://www.youtube.com/embed/MJm8kX81wYM" title="Mně nebo mě? — YouTube Short" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+			<div class="media">
+				<img src="mneMe.png" alt="Meme: mně vs mě">
+				<img src="screenshot.jpg" alt="Doporučení od Hogůšíků">
 			</div>
-		</section>
 
-		<hr>
-
-		<!-- ═══ jí / ji ═══ -->
-		<section id="jiji">
-			<div class="with-meme">
-				<div>
-					<h2>Jí nebo ji?</h2>
-					<p>Další zapeklitá zájmena. Ale během minuty ti to začne dávat smysl!</p>
-
-					<div class="card">
-						<p><strong>Ji</strong> — používáme <strong style="color:var(--foreground)">pouze</strong> ve 4. pádě (koho, co). Nahradíme zájmenem <strong>tu</strong>.</p>
-						<p><strong>Jí</strong> — používáme ve všech ostatních pádech. Nahradíme zájmenem <strong>té</strong>.</p>
-					</div>
-
-					<div class="tip">Krátké „ji" = krátké „tu" &nbsp;|&nbsp; Dlouhé „jí" = dlouhé „té"</div>
-
-					<div class="card">
-						<p>Snažil se <span class="swap" data-alt="té">jí</span> říct, že <span class="swap" data-alt="té">jí</span> spadla peněženka.</p>
-						<p>Nakonec si <span class="swap" data-alt="tu">ji</span> nechal. Půjde <span class="swap" data-alt="tu">ji</span> zužitkovat v kasínu.</p>
-						<p>Uslyšel <span class="swap" data-alt="tu">ji</span> brečet a vrátil <span class="swap" data-alt="té">jí</span> peněženku.</p>
-					</div>
-				</div>
-				<div class="meme">
-					<img src="jiJi.png" alt="Meme: jí vs ji">
-				</div>
+			<div class="shorts">
+				<iframe src="https://www.youtube.com/embed/MJm8kX81wYM" title="Mně nebo mě? - YouTube Short" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 			</div>
-		</section>
+		</article>
 
-		<hr>
+		<!-- jí / ji -->
+		<article id="jiji">
+			<h2>Jí nebo ji?</h2>
+			<p>Další zapeklitá zájmena - ale během minuty ti to začne dávat smysl.</p>
 
-		<!-- ═══ tip / typ ═══ -->
-		<section id="typ">
-			<div class="with-meme">
-				<div>
-					<h2>Tip, typ? Co si vybrat?</h2>
-					<p>Na první pohled totožná slova. Ale „íčko" kompletně mění celý význam!</p>
-
-					<div class="card">
-						<p><strong>TIP</strong> — používá se ve významu rady, doporučení či odhadu (sázek)</p>
-						<p><strong>TYP</strong> — lidi, věci s určitými vlastnostmi (typ člověka, typ výrobku)</p>
-					</div>
-
-					<div class="card">
-						<p>Jarda si <span class="swap" data-alt="odhadl">tipnul</span>, že mu padnou tři sedmičky. Nevyšlo.</p>
-						<p>U Bohouše je mi dobře. Je to příjemný <strong>typ</strong> člověka.</p>
-						<p>Jestli se chceš dobře najíst, m<span class="swap" data-alt="á rada">ůj tip</span> je jídelna Štefánikova!</p>
-					</div>
-				</div>
-				<div class="meme">
-					<img src="tip.png" alt="Meme: tip vs typ">
-				</div>
+			<div class="rule">
+				<p><strong>Ji</strong> - pouze ve 4. pádě (koho, co). Nahradíme zájmenem <strong>tu</strong>.</p>
+				<p><strong>Jí</strong> - ve všech ostatních pádech. Nahradíme zájmenem <strong>té</strong>.</p>
 			</div>
-		</section>
 
-		<hr>
+			<div class="tip">💡 Krátké „ji" = krátké „tu" &nbsp;|&nbsp; Dlouhé „jí" = dlouhé „té"</div>
 
-		<!-- ═══ shlédnout / zhlédnout ═══ -->
-		<section id="zhlednout">
-			<h2>Shlédnout, zhlédnout, co zvolit?</h2>
-			<p>Velmi častá chyba v Discord konverzacích, ale i mimo Discord.</p>
-
-			<div class="card">
-				<p><strong>ZHLÉDNOUT</strong> — podívat se na film, video, stream</p>
-				<p><strong>SHLÉDNOUT</strong> — podívat se dolů (např. Vylezl jsem na kopec a shlédl do údolí.)</p>
-				<p><strong>VZHLÉDNOUT</strong> — pohledět vzhůru (např. vzhlédnout k oblakům)</p>
+			<div class="rule">
+				<p>Snažil se <span class="sw" data-alt="té">jí</span> říct, že <span class="sw" data-alt="té">jí</span> spadla peněženka.</p>
+				<p>Nakonec si <span class="sw" data-alt="tu">ji</span> nechal. Půjde <span class="sw" data-alt="tu">ji</span> zužitkovat v kasínu.</p>
+				<p>Uslyšel <span class="sw" data-alt="tu">ji</span> brečet a vrátil <span class="sw" data-alt="té">jí</span> peněženku.</p>
 			</div>
-		</section>
 
-		<hr>
+			<div class="media">
+				<img src="jiJi.png" alt="Meme: jí vs ji">
+			</div>
+		</article>
 
-		<!-- ═══ výjimka ═══ -->
-		<section id="vyjimka">
+		<!-- tip / typ -->
+		<article id="typ">
+			<h2>Tip nebo typ?</h2>
+			<p>Na první pohled totožná slova, ale „íčko" kompletně mění význam.</p>
+
+			<div class="rule">
+				<p><strong>TIP</strong> - rada, doporučení, odhad (sázek)</p>
+				<p><strong>TYP</strong> - druh, kategorie (typ člověka, typ výrobku)</p>
+			</div>
+
+			<div class="rule">
+				<p>Jarda si <span class="sw" data-alt="odhadl">tipnul</span>, že mu padnou tři sedmičky. Nevyšlo.</p>
+				<p>U Bohouše je mi dobře. Je to příjemný <strong>typ</strong> člověka.</p>
+				<p>Chceš se dobře najíst? M<span class="sw" data-alt="á rada">ůj tip</span> je jídelna Štefánikova!</p>
+			</div>
+
+			<div class="media">
+				<img src="tip.png" alt="Meme: tip vs typ">
+			</div>
+		</article>
+
+		<!-- shlédnout / zhlédnout -->
+		<article id="zhlednout">
+			<h2>Shlédnout, zhlédnout, vzhlédnout</h2>
+			<p>Velmi častá chyba nejen na Discordu.</p>
+
+			<div class="rule">
+				<p><strong>ZHLÉDNOUT</strong> - podívat se na film, video, stream</p>
+				<p><strong>SHLÉDNOUT</strong> - podívat se dolů (shlédl do údolí)</p>
+				<p><strong>VZHLÉDNOUT</strong> - pohledět vzhůru (vzhlédnout k oblakům)</p>
+			</div>
+		</article>
+
+		<!-- výjimka -->
+		<article id="vyjimka">
 			<h2>Vyjímka nebo výjimka?</h2>
-			<p>V tomto chybuje téměř každý, žáci středních škol ale i dospělí.</p>
+			<p>V tomto chybuje téměř každý.</p>
 
-			<div class="card">
+			<div class="rule">
 				<p>Jediná správná možnost je <strong>VÝJIMKA</strong>.</p>
-				<p>Proč? Vytváříme-li nová slova odvozováním, dochází poměrně často ke změně délky samohlásek (např. strávit – stravitelný). V našem případě ovšem došlo k takovéto změně v základovém slově hned dvakrát. První z nich nastala v předponě vy-, kde došlo k prodloužení samohlásky „y".</p>
+				<p>Při odvozování slov dochází ke změnám délky samohlásek (strávit → stravitelný). U výjimky došlo ke změně hned dvakrát - mj. prodloužení předpony vy- na vý-.</p>
 			</div>
-		</section>
+		</article>
 
-		<hr>
+		<!-- holt / hold -->
+		<article id="hold">
+			<h2>Holt, či hold?</h2>
+			<p>Vypadají podobně, ale význam je úplně jiný.</p>
 
-		<!-- ═══ holt / hold ═══ -->
-		<section id="hold">
-			<div class="with-meme">
-				<div>
-					<h2>Holt, či hold?</h2>
-					<p>Přestože se tato dvě slova mohou zdát velmi podobná, význam je úplně jiný!</p>
-
-					<div class="card">
-						<p><strong>HOLD</strong> — význam tohoto slova je <em>pocta</em></p>
-						<p><strong>HOLT</strong> — význam tohoto slova je <em>zkrátka, prostě</em></p>
-					</div>
-
-					<div class="card">
-						<p>Franta mi dnes dal samolepku z Kostíků. Vzdávám mu <span class="swap" data-alt="poctu">hold</span>.</p>
-						<p><span class="swap" data-alt="Prostě">Holt</span> jsem tomu pacholkovi musel napráskat.</p>
-						<p>Jistě, že uctívám a vzdávám <span class="swap" data-alt="poctu">hold</span> novému papežovi. <span class="swap" data-alt="Zkrátka">Holt</span> s Františkem už tolik zábavy nebude.</p>
-					</div>
-				</div>
-				<div class="meme">
-					<img src="holdHolt.png" alt="Meme: hold vs holt">
-				</div>
-			</div>
-		</section>
-
-		<hr>
-
-		<!-- ═══ jsi / si ═══ -->
-		<section id="jsi">
-			<div class="with-meme">
-				<div>
-					<h2>Jsi nebo si?</h2>
-					<p>Slova „jsi" a „si" jsou pro spoustu lidí hodně náročná. Jak už v nich chybu neudělat?</p>
-
-					<div class="card">
-						<p><strong>JSI</strong> — oslovení, mluvíme k nějaké osobě. Tvar slovesa být ve smyslu existovat.</p>
-						<p><strong>SI</strong> — zvratné zájmeno ke slovesu, dá se nahradit zájmeny <em>sebe, sobě</em>.</p>
-					</div>
-
-					<div class="card">
-						<p>Hrál <span class="swap" data-alt="sobě">si</span> na hřišti, dokud ho nepřepadl nějaký dědeček.</p>
-						<p>Už <strong>jsi</strong> tu měl být čtyři minuty, ty magore!</p>
-					</div>
-
-					<div class="tip">To samé platí pro „jsem" vs „sem" — „sem" je pouze ukazovací příslovce (pojď sem), zatímco „jsem" je tvar slovesa být.</div>
-				</div>
-				<div class="meme">
-					<img src="jsiSi.png" alt="Meme: jsi vs si">
-				</div>
+			<div class="rule">
+				<p><strong>HOLD</strong> - pocta (vzdávat hold)</p>
+				<p><strong>HOLT</strong> - zkrátka, prostě</p>
 			</div>
 
-			<img class="screenshot" src="screenshot2.jpg" alt="GeekBoy screenshot">
-
-			<div class="shorts-embed">
-				<iframe src="https://www.youtube.com/embed/-dkXEUGJvZ8" title="Jsi nebo si? — YouTube Short" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+			<div class="rule">
+				<p>Franta mi dal samolepku z Kostíků. Vzdávám mu <span class="sw" data-alt="poctu">hold</span>.</p>
+				<p><span class="sw" data-alt="Prostě">Holt</span> jsem tomu pacholkovi musel napráskat.</p>
+				<p>Vzdávám <span class="sw" data-alt="poctu">hold</span> novému papežovi. <span class="sw" data-alt="Zkrátka">Holt</span> s Františkem už tolik zábavy nebude.</p>
 			</div>
-		</section>
 
-		<hr>
-
-		<!-- ═══ sloveso být ═══ -->
-		<section id="byt">
-			<div class="with-meme">
-				<div>
-					<h2>Tvary slovesa být</h2>
-					<p>Časování nejpoužívanějšího slovesa BÝT může být velmi zapeklité. Naštěstí existuje vždy jen jedna gramaticky správná varianta.</p>
-
-					<table class="tbl">
-						<thead><tr><th>Osoba</th><th>Tvar</th></tr></thead>
-						<tbody>
-							<tr><td>já</td><td>bych</td></tr>
-							<tr><td>ty</td><td>bys</td></tr>
-							<tr><td>on, ona, ono</td><td>by</td></tr>
-							<tr><td>my</td><td>bychom</td></tr>
-							<tr><td>vy</td><td>byste</td></tr>
-							<tr><td>oni, ony, ona</td><td>by</td></tr>
-						</tbody>
-					</table>
-
-					<p><strong style="color:var(--foreground)">Žádný jiný tvar NE!</strong> Žádné „by jsme", „by jste", „byjsem" — vše je vždy jednoslovné.</p>
-
-					<div class="tip">Nikdy se v nich nepíše „j" (žádné <em>byjste</em>) a není tam tvar „jsem" (žádné <em>bysem</em>, ale <strong>bych</strong>).</div>
-				</div>
-				<div class="meme">
-					<img src="bysme.png" alt="Meme: bysme vs bychom">
-				</div>
+			<div class="media">
+				<img src="holdHolt.png" alt="Meme: hold vs holt">
 			</div>
-		</section>
+		</article>
 
+		<!-- jsi / si -->
+		<article id="jsi">
+			<h2>Jsi nebo si?</h2>
+			<p>Pro spoustu lidí překvapivě náročné.</p>
+
+			<div class="rule">
+				<p><strong>JSI</strong> - tvar slovesa být, oslovení (Ty jsi…)</p>
+				<p><strong>SI</strong> - zvratné zájmeno, nahradíme <em>sebe/sobě</em> (hrál si, číst si)</p>
+			</div>
+
+			<div class="rule">
+				<p>Hrál <span class="sw" data-alt="sobě">si</span> na hřišti, dokud ho nepřepadl nějaký dědeček.</p>
+				<p>Už <strong>jsi</strong> tu měl být čtyři minuty!</p>
+			</div>
+
+			<div class="tip">💡 To samé platí pro „jsem" vs „sem" - „sem" je příslovce (pojď sem), „jsem" je sloveso být.</div>
+
+			<div class="media">
+				<img src="jsiSi.png" alt="Meme: jsi vs si">
+				<img src="screenshot2.jpg" alt="GeekBoy screenshot">
+			</div>
+
+			<div class="shorts">
+				<iframe src="https://www.youtube.com/embed/-dkXEUGJvZ8" title="Jsi nebo si? - YouTube Short" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+			</div>
+		</article>
+
+		<!-- sloveso být -->
+		<article id="byt">
+			<h2>Tvary slovesa být</h2>
+			<p>Žádné „by jsme" ani „by jste" - vždy je to jedno slovo.</p>
+
+			<table class="tbl">
+				<thead><tr><th>Osoba</th><th>Tvar</th></tr></thead>
+				<tbody>
+					<tr><td>já</td><td>bych</td></tr>
+					<tr><td>ty</td><td>bys</td></tr>
+					<tr><td>on, ona, ono</td><td>by</td></tr>
+					<tr><td>my</td><td>bychom</td></tr>
+					<tr><td>vy</td><td>byste</td></tr>
+					<tr><td>oni, ony, ona</td><td>by</td></tr>
+				</tbody>
+			</table>
+
+			<div class="tip">💡 Nikdy se v nich nepíše „j" (žádné <em>byjste</em>) a není tam tvar „jsem" (žádné <em>bysem</em>, ale <strong>bych</strong>).</div>
+
+			<div class="media">
+				<img src="bysme.png" alt="Meme: bysme vs bychom">
+			</div>
+		</article>
 	</main>
 
 	<footer>
-		<div class="footer-brand">Projekt <a href="https://smirkhat.org">SmirkHat.org</a></div>
-		Původní verzi vytvořil <a href="https://github.com/danielsebesta">Dast</a> (dast@smirkhat.org)<br>
-		Memes a obsah zařídil <a href="https://github.com/pitrdzej">Hogůšik</a> (hogusik@smirkhat.org)
+		<div class="fb">Projekt <a href="https://smirkhat.org">SmirkHat.org</a></div>
+		Původní verzi vytvořil <a href="https://github.com/danielsebesta">Dast</a><br>
+		Memes a obsah zařídil <a href="https://github.com/pitrdzej">Hogůšik</a>
 	</footer>
 
 	<script>
-		document.querySelectorAll('.swap').forEach(el => {
+		// Swap interaction
+		document.querySelectorAll('.sw').forEach(el => {
 			const original = el.innerHTML;
 			const alt = el.getAttribute('data-alt');
 			el.addEventListener('mouseenter', () => { el.textContent = alt; });
 			el.addEventListener('mouseleave', () => { el.innerHTML = original; });
 		});
 
-		const toggle = document.getElementById('navToggle');
-		const mobile = document.getElementById('navMobile');
-		toggle.addEventListener('click', () => { mobile.classList.toggle('open'); });
-		mobile.querySelectorAll('a').forEach(a => {
-			a.addEventListener('click', () => { mobile.classList.remove('open'); });
+		// Mobile menu
+		const btn = document.getElementById('menuBtn');
+		const menu = document.getElementById('mobileMenu');
+		btn.addEventListener('click', () => {
+			const open = menu.classList.toggle('open');
+			btn.setAttribute('aria-expanded', open);
+		});
+		menu.querySelectorAll('a').forEach(a => {
+			a.addEventListener('click', () => {
+				menu.classList.remove('open');
+				btn.setAttribute('aria-expanded', 'false');
+			});
 		});
 	</script>
 </body>
