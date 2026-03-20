@@ -107,8 +107,12 @@
 		}
 		.nav-bar {
 			max-width: 760px; margin: 0 auto; padding: 0 20px;
-			display: flex; align-items: center; height: 56px;
-			justify-content: space-between;
+			display: flex; align-items: center;
+			justify-content: space-between; flex-wrap: wrap;
+		}
+		.nav-brand-row {
+			width: 100%; display: flex; align-items: center; justify-content: space-between;
+			height: 56px;
 		}
 		.nav-brand {
 			font-weight: 600; font-size: 15px; color: var(--foreground);
@@ -118,6 +122,7 @@
 		.nav-links {
 			display: flex; gap: 4px; align-items: center;
 			overflow: hidden; flex-wrap: nowrap;
+			width: 100%; padding: 0 0 12px; justify-content: center;
 		}
 		.nav-links a {
 			color: var(--muted-foreground); text-decoration: none; font-size: 14px; font-weight: 500;
@@ -270,29 +275,25 @@
 
 		/* ── Footer ── */
 		footer {
-			text-align: center; padding: 40px 20px; color: var(--muted-foreground);
-			font-size: 13px; border-top: 1px solid var(--border);
+			text-align: center; padding: 48px 20px; color: var(--muted-foreground);
+			font-size: 13px; border-top: 1px solid var(--border); line-height: 1.8;
 		}
 		footer a {
 			color: var(--muted-foreground); text-decoration: underline;
 			text-underline-offset: 3px; text-decoration-thickness: 1px;
 		}
 		footer a:hover { color: var(--primary); }
+		footer .footer-brand {
+			display: block; font-size: 15px; font-weight: 600;
+			color: var(--foreground); margin-bottom: 8px;
+		}
+		footer .footer-brand a { color: var(--primary); text-decoration: none; font-weight: 700; }
+		footer .footer-brand a:hover { text-decoration: underline; }
 
 		/* ── Links ── */
 		a { color: var(--primary); text-decoration: none; transition: color 0.2s; }
 		a:hover { text-decoration: underline; }
 
-		/* ── Related — like a muted section ── */
-		.related {
-			margin-top: 56px; padding: 24px; background: var(--muted);
-			border-radius: var(--radius);
-		}
-		.related h3 {
-			font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em;
-			color: var(--muted-foreground); margin-bottom: 10px; font-weight: 600;
-		}
-		.related ul { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 20px; }
 
 		/* ── YouTube Shorts embed ── */
 		.shorts-embed {
@@ -316,7 +317,12 @@
 <body>
 	<nav>
 		<div class="nav-bar">
-			<a href="#" class="nav-brand">cestina.top</a>
+			<div class="nav-brand-row">
+				<a href="#" class="nav-brand">cestina.top</a>
+				<button class="nav-toggle" id="navToggle" aria-label="Menu">
+					<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+				</button>
+			</div>
 			<div class="nav-links">
 				<a href="#mneme">mně/mě</a>
 				<a href="#jiji">jí/ji</a>
@@ -327,9 +333,6 @@
 				<a href="#jsi">jsi/si</a>
 				<a href="#byt">sloveso být</a>
 			</div>
-			<button class="nav-toggle" id="navToggle" aria-label="Menu">
-				<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-			</button>
 		</div>
 		<div class="nav-mobile" id="navMobile">
 			<a href="#mneme">mně/mě</a>
@@ -589,18 +592,12 @@
 			</div>
 		</section>
 
-		<div class="related">
-			<h3>Podobné stránky</h3>
-			<ul>
-				<li><a href="https://dontasktoask.com/">Don't ask to ask, just ask</a></li>
-				<li><a href="https://xyproblem.info/">The XY Problem</a></li>
-				<li><a href="https://nohello.net/">No Hello</a></li>
-			</ul>
-		</div>
 	</main>
 
 	<footer>
-		Vytvořil Dast v roce 2022. Memes od <a href="https://github.com/pitrdzej/naucit-mne.me">pitrdzej</a>. Projekt <a href="https://smirkhat.org">SmirkHat</a>.
+		<div class="footer-brand">Projekt <a href="https://smirkhat.org">SmirkHat.org</a></div>
+		Původní verzi vytvořil <a href="https://github.com/danielsebesta">Dast</a> (dast@smirkhat.org)<br>
+		Memes a obsah zařídil <a href="https://github.com/pitrdzej">Hogůšik</a> (hogusik@smirkhat.org)
 	</footer>
 
 	<script>
