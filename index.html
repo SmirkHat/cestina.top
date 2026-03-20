@@ -17,10 +17,6 @@
 	<meta property="og:url" content="https://cestina.top/">
 	<meta property="og:title" content="Nauč se česky jednou provždy!">
 	<meta property="og:description" content="Přehledný průvodce nejčastějšími chybami v češtině. Mně nebo mě? Tip nebo typ? Shlédnout nebo zhlédnout? Jí nebo ji?">
-	<meta property="og:image" content="https://cestina.top/mneme.png">
-	<meta property="og:image:width" content="1200">
-	<meta property="og:image:height" content="630">
-	<meta property="og:image:alt" content="Tahák do češtiny — cestina.top">
 	<meta property="og:site_name" content="cestina.top">
 	<meta property="og:locale" content="cs_CZ">
 
@@ -28,7 +24,6 @@
 	<meta name="twitter:card" content="summary_large_image">
 	<meta name="twitter:title" content="Nauč se česky jednou provždy!">
 	<meta name="twitter:description" content="Přehledný průvodce nejčastějšími chybami v češtině. Mně nebo mě? Tip nebo typ? Jí nebo ji?">
-	<meta name="twitter:image" content="https://cestina.top/mneme.png">
 
 	<meta name="theme-color" content="#f59e0b">
 
@@ -110,17 +105,50 @@
 			-webkit-backdrop-filter: blur(16px) saturate(180%);
 			background: color-mix(in srgb, var(--background) 80%, transparent);
 		}
-		.nav-inner {
-			max-width: 760px; margin: 0 auto; padding: 14px 20px;
-			display: flex; gap: 4px; flex-wrap: wrap; justify-content: center;
+		.nav-bar {
+			max-width: 760px; margin: 0 auto; padding: 0 20px;
+			display: flex; align-items: center; height: 56px;
+			justify-content: space-between;
 		}
-		nav a {
+		.nav-brand {
+			font-weight: 600; font-size: 15px; color: var(--foreground);
+			text-decoration: none; white-space: nowrap;
+		}
+		.nav-brand:hover { text-decoration: none; }
+		.nav-links {
+			display: flex; gap: 4px; align-items: center;
+			overflow: hidden; flex-wrap: nowrap;
+		}
+		.nav-links a {
 			color: var(--muted-foreground); text-decoration: none; font-size: 14px; font-weight: 500;
 			padding: 6px 14px; border-radius: 999px; transition: all 0.2s; white-space: nowrap;
 		}
-		nav a:hover {
+		.nav-links a:hover {
 			color: var(--primary);
 			background: color-mix(in srgb, var(--primary) 10%, transparent);
+		}
+		.nav-toggle {
+			display: none; background: none; border: none; cursor: pointer;
+			color: var(--foreground); padding: 8px; border-radius: 8px;
+			transition: background 0.2s;
+		}
+		.nav-toggle:hover { background: var(--muted); }
+		.nav-toggle svg { display: block; }
+		.nav-mobile {
+			display: none; flex-direction: column; padding: 8px 20px 16px;
+			max-width: 760px; margin: 0 auto; gap: 2px;
+		}
+		.nav-mobile a {
+			color: var(--muted-foreground); text-decoration: none; font-size: 15px; font-weight: 500;
+			padding: 10px 14px; border-radius: 10px; transition: all 0.2s;
+		}
+		.nav-mobile a:hover {
+			color: var(--primary); background: color-mix(in srgb, var(--primary) 10%, transparent);
+		}
+		.nav-mobile.open { display: flex; }
+		@media (max-width: 768px) {
+			.nav-links { display: none; }
+			.nav-toggle { display: block; }
 		}
 
 		/* ── Main ── */
@@ -277,7 +305,23 @@
 
 <body>
 	<nav>
-		<div class="nav-inner">
+		<div class="nav-bar">
+			<a href="#" class="nav-brand">cestina.top</a>
+			<div class="nav-links">
+				<a href="#mneme">mně/mě</a>
+				<a href="#jiji">jí/ji</a>
+				<a href="#typ">tip/typ</a>
+				<a href="#zhlednout">shlédnout/zhlédnout</a>
+				<a href="#vyjimka">výjimka</a>
+				<a href="#hold">holt/hold</a>
+				<a href="#jsi">jsi/si</a>
+				<a href="#byt">sloveso být</a>
+			</div>
+			<button class="nav-toggle" id="navToggle" aria-label="Menu">
+				<svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+			</button>
+		</div>
+		<div class="nav-mobile" id="navMobile">
 			<a href="#mneme">mně/mě</a>
 			<a href="#jiji">jí/ji</a>
 			<a href="#typ">tip/typ</a>
@@ -547,6 +591,13 @@
 			const alt = el.getAttribute('data-alt');
 			el.addEventListener('mouseenter', () => { el.textContent = alt; });
 			el.addEventListener('mouseleave', () => { el.innerHTML = original; });
+		});
+
+		const toggle = document.getElementById('navToggle');
+		const mobile = document.getElementById('navMobile');
+		toggle.addEventListener('click', () => { mobile.classList.toggle('open'); });
+		mobile.querySelectorAll('a').forEach(a => {
+			a.addEventListener('click', () => { mobile.classList.remove('open'); });
 		});
 	</script>
 </body>
