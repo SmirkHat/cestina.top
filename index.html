@@ -28,6 +28,7 @@
 
 	<link rel="icon" href="/favicon.ico">
 	<link rel="apple-touch-icon" href="/favicon.ico">
+	<link rel="manifest" href="/manifest.json">
 
 	<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 	<link rel="stylesheet" href="style.css">
@@ -83,7 +84,7 @@
 				</div>
 			</div>
 			<div class="aside">
-				<img src="mneMe.png" alt="Meme: mně vs mě">
+				<img loading="lazy" src="mneMe.png" alt="Meme: mně vs mě">
 				<div class="shorts">
 					<iframe src="https://www.youtube.com/embed/MJm8kX81wYM" title="Mně nebo mě? - YouTube Short" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
 				</div>
@@ -110,7 +111,7 @@
 				</div>
 			</div>
 			<div class="aside">
-				<img src="jiJi.png" alt="Meme: jí vs ji">
+				<img loading="lazy" src="jiJi.png" alt="Meme: jí vs ji">
 			</div>
 		</article>
 
@@ -156,7 +157,7 @@
 				</div>
 			</div>
 			<div class="aside">
-				<img src="tip.png" alt="Meme: tip vs typ">
+				<img loading="lazy" src="tip.png" alt="Meme: tip vs typ">
 			</div>
 		</article>
 
@@ -201,7 +202,7 @@
 				</div>
 			</div>
 			<div class="aside">
-				<img src="holdHolt.png" alt="Meme: hold vs holt">
+				<img loading="lazy" src="holdHolt.png" alt="Meme: hold vs holt">
 			</div>
 		</article>
 
@@ -251,7 +252,7 @@
 				<div class="tip">💡 Nikdy se v nich nepíše „j" (žádné <em>byjste</em>) a není tam tvar „jsem" (žádné <em>bysem</em>, ale <strong>bych</strong>).</div>
 			</div>
 			<div class="aside">
-				<img src="bysme.png" alt="Meme: bysme vs bychom">
+				<img loading="lazy" src="bysme.png" alt="Meme: bysme vs bychom">
 			</div>
 		</article>
 
@@ -344,7 +345,8 @@
 		</div>
 	</footer>
 
-	<script src="script.js"></script>
+	<script src="script.js" defer></script>
+	<script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js');</script>
 </body>
 
 </html>
