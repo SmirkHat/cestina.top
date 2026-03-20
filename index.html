@@ -275,6 +275,10 @@
 		}
 		footer .fb a { color: var(--primary); text-decoration: none; font-weight: 700; }
 		footer .fb a:hover { text-decoration: underline; }
+		footer .credits {
+			display: flex; gap: 8px 24px; justify-content: center; flex-wrap: wrap;
+		}
+		footer .credits span { white-space: nowrap; }
 
 		/* ─── GLOBAL ─── */
 		a { color: var(--primary); text-decoration: none; }
@@ -507,9 +511,11 @@
 
 	<footer>
 		<div class="fb">Projekt <a href="https://smirkhat.org">SmirkHat.org</a></div>
-		Původní verzi vytvořil <a href="https://github.com/danielsebesta">Dast</a><br>
-		Memes a obsah zařídil <a href="https://github.com/pitrdzej">Hogůšik</a><br>
-		Videa s laskavým svolením <a href="https://www.youtube.com/@error1k">ERROR1K</a>
+		<div class="credits">
+			<span><a href="https://github.com/danielsebesta">Dast</a> - původní verze</span>
+			<span><a href="https://github.com/pitrdzej">Hogůšik</a> - memes a obsah</span>
+			<span><a href="https://www.youtube.com/@error1k">ERROR1K</a> - videa</span>
+		</div>
 	</footer>
 
 	<script>
