@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Čeština — Nauč se to jednou provždy!</title>
+	<meta name="description" content="Přehledný průvodce nejčastějšími chybami v češtině: mně/mě, tip/typ, shlédnout/zhlédnout a další.">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta property="og:title" content="Čeština — Nauč se to jednou provždy!">
+	<meta property="og:image" content="https://cestina.top/mneme.png">
+	<meta name="theme-color" content="#2563eb">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+	<style>
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		:root {
+			--bg: #fafafa;
+			--bg-card: #ffffff;
+			--text: #1a1a2e;
+			--text-muted: #64748b;
+			--accent: #2563eb;
+			--accent-light: #dbeafe;
+			--border: #e2e8f0;
+			--highlight: #f59e0b;
+			--correct: #10b981;
+			--incorrect: #ef4444;
+			color-scheme: light dark;
+		}
+
+		@media (prefers-color-scheme: dark) {
+			:root {
+				--bg: #0f172a;
+				--bg-card: #1e293b;
+				--text: #e2e8f0;
+				--text-muted: #94a3b8;
+				--accent: #60a5fa;
+				--accent-light: #1e3a5f;
+				--border: #334155;
+				--highlight: #fbbf24;
+				--correct: #34d399;
+				--incorrect: #f87171;
+			}
+		}
+
+		html {
+			scroll-behavior: smooth;
+			scroll-padding-top: 80px;
+		}
+
+		body {
+			font-family: 'Inter', system-ui, -apple-system, sans-serif;
+			background: var(--bg);
+			color: var(--text);
+			line-height: 1.7;
+			font-size: 17px;
+		}
+
+		/* Navigation */
+		nav {
+			position: sticky;
+			top: 0;
+			z-index: 100;
+			background: var(--bg);
+			border-bottom: 1px solid var(--border);
+			backdrop-filter: blur(12px);
+			background: color-mix(in srgb, var(--bg) 85%, transparent);
+		}
+
+		nav .nav-inner {
+			max-width: 740px;
+			margin: 0 auto;
+			padding: 12px 20px;
+			display: flex;
+			gap: 8px;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+		}
+
+		nav a {
+			color: var(--text-muted);
+			text-decoration: none;
+			font-size: 14px;
+			font-weight: 500;
+			padding: 4px 10px;
+			border-radius: 6px;
+			transition: all 0.2s;
+			white-space: nowrap;
+		}
+
+		nav a:hover {
+			color: var(--accent);
+			background: var(--accent-light);
+		}
+
+		/* Main content */
+		main {
+			max-width: 740px;
+			margin: 0 auto;
+			padding: 40px 20px 80px;
+		}
+
+		/* Hero */
+		.hero {
+			text-align: center;
+			padding: 60px 0 40px;
+		}
+
+		.hero h1 {
+			font-size: clamp(1.8rem, 5vw, 2.8rem);
+			font-weight: 700;
+			line-height: 1.2;
+			margin-bottom: 12px;
+		}
+
+		.hero p {
+			color: var(--text-muted);
+			font-size: 1.1rem;
+		}
+
+		/* Sections */
+		section {
+			margin-top: 48px;
+			padding-top: 16px;
+		}
+
+		section h2 {
+			font-size: 1.6rem;
+			font-weight: 700;
+			margin-bottom: 16px;
+			line-height: 1.3;
+		}
+
+		section p {
+			margin-bottom: 16px;
+		}
+
+		/* Chat bubbles */
+		.chat {
+			display: flex;
+			flex-direction: column;
+			gap: 8px;
+			margin: 20px 0;
+		}
+
+		.chat .msg {
+			background: var(--bg-card);
+			border: 1px solid var(--border);
+			border-radius: 12px;
+			padding: 10px 16px;
+			display: flex;
+			gap: 8px;
+			align-items: baseline;
+			font-family: 'Fira Code', monospace;
+			font-size: 15px;
+		}
+
+		.chat .name {
+			font-weight: 600;
+			white-space: nowrap;
+		}
+
+		.wrong {
+			color: var(--incorrect);
+			font-weight: 600;
+			text-decoration: line-through;
+			text-decoration-thickness: 2px;
+		}
+
+		.right {
+			color: var(--correct);
+			font-weight: 600;
+		}
+
+		/* Rule cards */
+		.rule-card {
+			background: var(--bg-card);
+			border: 1px solid var(--border);
+			border-radius: 12px;
+			padding: 20px 24px;
+			margin: 20px 0;
+		}
+
+		.rule-card p {
+			margin-bottom: 8px;
+		}
+
+		.rule-card p:last-child {
+			margin-bottom: 0;
+		}
+
+		/* Example table */
+		.example-grid {
+			display: grid;
+			gap: 8px;
+			margin: 20px 0;
+		}
+
+		.example-row {
+			background: var(--bg-card);
+			border: 1px solid var(--border);
+			border-radius: 10px;
+			padding: 12px 18px;
+			font-family: 'Fira Code', monospace;
+			font-size: 15px;
+			line-height: 1.5;
+		}
+
+		.example-row .arrow {
+			color: var(--text-muted);
+			margin: 0 4px;
+		}
+
+		/* Declension table */
+		.decl-table {
+			width: 100%;
+			border-collapse: separate;
+			border-spacing: 0;
+			margin: 20px 0;
+			border-radius: 12px;
+			overflow: hidden;
+			border: 1px solid var(--border);
+		}
+
+		.decl-table th,
+		.decl-table td {
+			padding: 10px 16px;
+			text-align: left;
+		}
+
+		.decl-table th {
+			background: var(--accent);
+			color: white;
+			font-weight: 600;
+			font-size: 14px;
+		}
+
+		.decl-table td {
+			background: var(--bg-card);
+			border-bottom: 1px solid var(--border);
+		}
+
+		.decl-table tr:last-child td {
+			border-bottom: none;
+		}
+
+		.decl-table td:first-child {
+			font-weight: 500;
+			white-space: nowrap;
+			color: var(--text-muted);
+		}
+
+		/* Divider */
+		hr {
+			border: none;
+			border-top: 1px solid var(--border);
+			margin: 48px 0 0;
+		}
+
+		/* Screenshot */
+		.screenshot {
+			border-radius: 12px;
+			max-width: 120px;
+			margin: 12px 0;
+			border: 1px solid var(--border);
+		}
+
+		/* Tip box */
+		.tip {
+			background: var(--accent-light);
+			border-left: 4px solid var(--accent);
+			border-radius: 0 10px 10px 0;
+			padding: 14px 18px;
+			margin: 20px 0;
+			font-size: 15px;
+		}
+
+		/* Footer */
+		footer {
+			text-align: center;
+			padding: 32px 20px;
+			color: var(--text-muted);
+			font-size: 13px;
+			border-top: 1px solid var(--border);
+		}
+
+		footer a {
+			color: var(--text-muted);
+			text-decoration: underline;
+			text-decoration-thickness: 1px;
+			text-underline-offset: 2px;
+		}
+
+		footer a:hover {
+			color: var(--accent);
+		}
+
+		/* Links */
+		a {
+			color: var(--accent);
+			text-decoration: none;
+			transition: color 0.2s;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+		/* Related sites */
+		.related {
+			margin-top: 48px;
+			padding: 20px 24px;
+			background: var(--bg-card);
+			border: 1px solid var(--border);
+			border-radius: 12px;
+		}
+
+		.related h3 {
+			font-size: 14px;
+			text-transform: uppercase;
+			letter-spacing: 0.05em;
+			color: var(--text-muted);
+			margin-bottom: 8px;
+		}
+
+		.related ul {
+			list-style: none;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px 16px;
+		}
+
+		/* Warning label */
+		.label-wrong {
+			display: inline-block;
+			background: color-mix(in srgb, var(--incorrect) 15%, transparent);
+			color: var(--incorrect);
+			font-size: 12px;
+			font-weight: 600;
+			padding: 2px 8px;
+			border-radius: 4px;
+			text-transform: uppercase;
+			letter-spacing: 0.03em;
+		}
+
+		.label-right {
+			display: inline-block;
+			background: color-mix(in srgb, var(--correct) 15%, transparent);
+			color: var(--correct);
+			font-size: 12px;
+			font-weight: 600;
+			padding: 2px 8px;
+			border-radius: 4px;
+			text-transform: uppercase;
+			letter-spacing: 0.03em;
+		}
+	</style>
+</head>
+
+<body>
+	<nav>
+		<div class="nav-inner">
+			<a href="#mneme">mně/mě</a>
+			<a href="#typ">tip/typ</a>
+			<a href="#zhlednout">shlédnout/zhlédnout</a>
+			<a href="#vyjimka">výjimka</a>
+			<a href="#hold">holt/hold</a>
+			<a href="#jsi">jsi/si</a>
+			<a href="#byt">sloveso být</a>
+		</div>
+	</nav>
+
+	<main>
+		<div class="hero">
+			<h1>Čeština — nauč se to jednou provždy!</h1>
+			<p>Přehledný průvodce nejčastějšími chybami v češtině</p>
+		</div>
+
+		<!-- mně / mě -->
+		<section id="mneme">
+			<h2>Nauč se mně/mě jednou provždy!</h2>
+			<p>Poslední dobou jsem začínal stále častěji na Discordu vídat špatně napsané mě nebo mně. Například zde:</p>
+
+			<div class="chat">
+				<div class="msg">
+					<span class="name">Rohlík:</span>
+					<span>Za <span class="wrong">mně</span> fajn.</span>
+				</div>
+				<div class="msg">
+					<span class="name">pepa_z_depa:</span>
+					<span><span class="wrong">Mě</span> žral Chrome hrozně moc RAMky</span>
+				</div>
+			</div>
+
+			<p>Všechny tyhle zprávy používají mě/mně špatně. Jak je to ale dobře?</p>
+
+			<div class="chat">
+				<div class="msg">
+					<span class="name">Rohlík:</span>
+					<span>Za <span class="right">mě</span> fajn.</span>
+				</div>
+				<div class="msg">
+					<span class="name">pepa_z_depa:</span>
+					<span><span class="right">Mně</span> žral Chrome hrozně moc RAMky</span>
+				</div>
+			</div>
+
+			<p>Je spoustu pomůcek a tabulek, já vám však ukážu to nejvíce jednoduché podle čeho se řídím i já.</p>
+			<p>Nejdřív trochu složitější tabulka, ale jde taky použít.</p>
+
+			<table class="decl-table">
+				<thead>
+					<tr>
+						<th>Pád</th>
+						<th>Tvar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr><td>1. pád</td><td>já</td></tr>
+					<tr><td>2. pád</td><td>mě, mne</td></tr>
+					<tr><td>3. pád</td><td>mi, <strong>mně</strong></td></tr>
+					<tr><td>4. pád</td><td><strong>mě</strong>, mne</td></tr>
+					<tr><td>5. pád</td><td>mě, mne</td></tr>
+					<tr><td>6. pád</td><td>(o) <strong>mně</strong></td></tr>
+					<tr><td>7. pád</td><td>mnou</td></tr>
+				</tbody>
+			</table>
+
+			<p>Teď něco co se dá velmi dobře zapamatovat.</p>
+			<p>Stačí si za mě/mně doplnit libovolné jméno, většinou se používá <strong>Vašek</strong>, <strong>Pepa</strong>, nebo <strong>Honza</strong>.</p>
+
+			<div class="tip">Koncovka jména má 1 písmeno → <strong>mě</strong> &nbsp;|&nbsp; Koncovka jména má 3 písmena → <strong>mně</strong></div>
+
+			<div class="example-grid">
+				<div class="example-row">Dáš to m__? <span class="arrow">→</span> Dáš to Pep<strong>ovi</strong> <span class="arrow">→</span> 3 písmena = <span class="right">mně</span></div>
+				<div class="example-row">Podle m__ <span class="arrow">→</span> Podle Pep<strong>y</strong> <span class="arrow">→</span> 1 písmeno = <span class="right">mě</span></div>
+				<div class="example-row">Za m__ fajn. <span class="arrow">→</span> Za Pep<strong>u</strong> fajn. <span class="arrow">→</span> 1 písmeno = <span class="right">mě</span></div>
+				<div class="example-row">M__ se to líbilo. <span class="arrow">→</span> Pep<strong>ovi</strong> se to líbilo. <span class="arrow">→</span> 3 písmena = <span class="right">mně</span></div>
+			</div>
+
+			<p>Další způsob, pro někoho jednodušší:</p>
+			<img class="screenshot" src="screenshot.jpg" alt="Doporučení od Hogůšíků">
+
+			<div class="tip">Tobě → <strong>mně</strong> &nbsp;|&nbsp; Tebe → <strong>mě</strong></div>
+
+			<div class="example-grid">
+				<div class="example-row">Dáš to m__? <span class="arrow">→</span> Dáš to Tobě? <span class="arrow">→</span> Tobě = <span class="right">mně</span></div>
+				<div class="example-row">Podle m__ <span class="arrow">→</span> Podle Tebe <span class="arrow">→</span> Tebe = <span class="right">mě</span></div>
+				<div class="example-row">Za m__ fajn. <span class="arrow">→</span> Za Tebe fajn. <span class="arrow">→</span> Tebe = <span class="right">mě</span></div>
+				<div class="example-row">M__ se to líbilo. <span class="arrow">→</span> Tobě se to líbilo. <span class="arrow">→</span> Tobě = <span class="right">mně</span></div>
+			</div>
+		</section>
+
+		<hr>
+
+		<!-- tip / typ -->
+		<section id="typ">
+			<h2>Tip, typ? Co si vybrat?</h2>
+			<p>Je to jednoduché, ale i tak v tom spoustu lidí dělá chyby.</p>
+
+			<div class="rule-card">
+				<p><strong>TIP</strong> — používá se ve významu rady, doporučení či odhadu</p>
+				<p><strong>TYP</strong> — lidi, věci s nějakými určitými vlastnostmi (např. typ výrobků)</p>
+			</div>
+		</section>
+
+		<hr>
+
+		<!-- shlédnout / zhlédnout -->
+		<section id="zhlednout">
+			<h2>Shlédnout, zhlédnout, co zvolit?</h2>
+			<p>Velmi častá chyba v Discord konverzacích, ale i mimo Discord.</p>
+
+			<div class="rule-card">
+				<p><strong>ZHLÉDNOUT</strong> — podívat se na film, video, stream</p>
+				<p><strong>SHLÉDNOUT</strong> — podívat se dolů (např. Vylezl jsem na kopec a shlédl do údolí.)</p>
+				<p><strong>VZHLÉDNOUT</strong> — pohledět vzhůru (např. vzhlédnout k oblakům)</p>
+			</div>
+		</section>
+
+		<hr>
+
+		<!-- výjimka -->
+		<section id="vyjimka">
+			<h2>Vyjímka nebo výjimka?</h2>
+			<p>V tomto chybuje téměř každý, žáci středních škol ale i dospělí.</p>
+
+			<div class="rule-card">
+				<p>Jediná správná možnost je <strong>VÝJIMKA</strong>.</p>
+				<p>Proč? Vytváříme-li nová slova odvozováním, dochází poměrně často ke změně délky samohlásek (např. strávit – stravitelný). V našem případě ovšem došlo k takovéto změně v základovém slově hned dvakrát. První z nich nastala v předponě vy-, kde došlo k prodloužení samohlásky „y".</p>
+			</div>
+		</section>
+
+		<hr>
+
+		<!-- holt / hold -->
+		<section id="hold">
+			<h2>Holt, či hold?</h2>
+			<p>Tak co, umíte správně použít hold a holt?</p>
+
+			<div class="rule-card">
+				<p><strong>HOLD</strong> — význam tohoto slova je <em>pocta</em></p>
+				<p><strong>HOLT</strong> — význam tohoto slova je <em>zkrátka, prostě</em></p>
+			</div>
+		</section>
+
+		<hr>
+
+		<!-- jsi / si -->
+		<section id="jsi">
+			<h2>Jsi nebo si?</h2>
+			<p>Nečekal bych, že sem něco takového dávat, ale GeekBoy mě donutil.</p>
+			<img class="screenshot" src="screenshot2.jpg" alt="GeekBoy screenshot">
+
+			<div class="rule-card">
+				<p><strong>JSI</strong> — vystupuje jako tvar slovesa být. Užíváme jej tedy tradičně jako sloveso být ve smyslu existovat (např. být někde, někdo)</p>
+				<p><strong>SI</strong> — je tvarem zvratného zájmena. Toto zájmeno, společně s tvarem „se", se pojí se slovesy (učit se, číst si, zpívat si)</p>
+			</div>
+		</section>
+
+		<hr>
+
+		<!-- sloveso být -->
+		<section id="byt">
+			<h2>Tvary slovesa být</h2>
+			<p>By jsme, by jste, jak je to správně?</p>
+
+			<table class="decl-table">
+				<thead>
+					<tr>
+						<th>Osoba</th>
+						<th>Tvar</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr><td>já</td><td>bych</td></tr>
+					<tr><td>ty</td><td>bys</td></tr>
+					<tr><td>on, ona, ono</td><td>by</td></tr>
+					<tr><td>my</td><td>bychom</td></tr>
+					<tr><td>vy</td><td>byste</td></tr>
+					<tr><td>oni, ony, ona</td><td>by</td></tr>
+				</tbody>
+			</table>
+
+			<p><strong>Žádný jiný tvar NE!</strong></p>
+		</section>
+
+		<div class="related">
+			<h3>Podobné stránky</h3>
+			<ul>
+				<li><a href="https://dontasktoask.com/">Don't ask to ask, just ask</a></li>
+				<li><a href="https://xyproblem.info/">The XY Problem</a></li>
+				<li><a href="https://nohello.net/">No Hello</a></li>
+			</ul>
+		</div>
+	</main>
+
+	<footer>
+		Inspirováno projektem <a href="https://github.com/maunium/dontasktoask.com">dontasktoask.com</a>. Vytvořil Dast v roce 2022. Modernizováno 2026.
+	</footer>
+</body>
+
+</html>
